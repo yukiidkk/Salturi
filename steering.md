@@ -7,7 +7,7 @@ Desarrollar una plataforma web para la comunidad local y turistas de Saltillo qu
 
 ## 2. Paleta de Colores & Diseño de Interfaz (Branding Saltillo)
 * **Primario:** Terracota (`#C85A32`) - Inspirado en la alfarería y arquitectura del Centro Histórico.
-* **Secundario:** Ocre / Sol (`#E0A96D`) - Para badges de "🔥 Hoy", calificaciones e hitos.
+* **Secundario:** Ocre / Sol (`#E0A96D`) - Para badges de " Hoy", calificaciones e hitos.
 * **Fondo:** Blanco Hueso / Beige Cantera (`#F5F3EF`) - Estilo cálido y legible.
 * **Acento:** Azul Índigo (`#1B3B6F`) - Para navegación, headers y detalles de alto contraste.
 * **Layout Principal:** Feed superior interactivo tipo banner carrusel deslizable horizontalmente para eventos destacados, seguido por secciones de mapa y navegación superior (Eventos, Turismo, Historia, Contacto, Iniciar Sesión).
@@ -29,7 +29,7 @@ Desarrollar una plataforma web para la comunidad local y turistas de Saltillo qu
 ### A. Feed de Eventos & Exploración (Carrusel / Banner Horizontal)
 * Banner de eventos con navegación horizontal deslizable (slider/carrusel).
 * Filtros rápidos: `Hoy`, `Esta semana`, `Categoría` (Música, Bazaares, Gastronomía, etc.).
-* Badges visuales: `🔥 Hoy`, `📍 Centro Histórico`, `Verificado`.
+* Badges visuales: ` Hoy`, `📍 Centro Histórico`, `Verificado`.
 * Buscador en tiempo real por palabra clave o zona.
 
 ### B. Mapa Interactivo de Turismo
