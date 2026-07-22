@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explora Saltillo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Iconos de FontAwesome para las flechas de navegación -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado / Navegación -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>EXPLORA<br><span>SALTILLO</span></h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Eventos</a>
+            <a href="#">Turismo</a>
+            <a href="#">Historia</a>
+            <a href="#">Contacto</a>
+        </nav>
+        <button type="button" class="btn-login">Iniciar Sesión</button>
+    </header>
+
+    <!-- Sección Principal / Carrusel de Eventos -->
+    <section class="hero-section">
+        <div class="wave-bg"></div>
+
+        <!-- Botón Carrusel Izquierdo -->
+        <button type="button" class="carousel-arrow left-arrow">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="carousel-container">
+            <!-- Tarjeta Izquierda -->
+            <div class="card card-side">
+                <div class="card-img-container">
+                    <!-- cambiar ruta de imagen -->
+                    <img src="imagen.jpg" alt="Concierto Orquesta de Coahuila">
+                </div>
+                <h3>Concierto: Orquesta de Coahuila</h3>
+            </div>
+
+            <!-- Tarjeta Central (Destacada) -->
+            <div class="card card-featured">
+                <div class="card-img-container featured-img">
+                    <!-- cambiar ruta de imagen -->
+                    <img src="imagen.jpg" alt="Feria de la Caña 2026">
+                </div>
+                <div class="card-content">
+                    <span class="date-tag">25-31 Julio</span>
+                    <h2>Feria de Saltillo: Tradición y Sabor</h2>
+                    <button type="button" class="btn-primary">Ver Evento</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta Derecha -->
+            <div class="card card-side">
+                <div class="card-img-container">
+                    <!-- cambiar ruta de imagen -->
+                    <img src="imagen.jpg" alt="Mercado de Artesanos">
+                </div>
+                <h3>Mercado de Artesanos</h3>
+            </div>
+        </div>
+
+        <!-- Botón Carrusel Derecho -->
+        <button type="button" class="carousel-arrow right-arrow">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Puntos Debajo Carrusel -->
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- Sección Inferior: Mapa y Top Lugares -->
+    <section class="bottom-section">
+        <!-- Bloque Explora el Mapa -->
+        <div class="info-box map-box">
+            <h2>Explora el Mapa</h2>
+            <div class="map-illustration">
+                <!-- cambiar ruta de imagen -->
+                <img src="mapa.png" alt="Mapa interactivo">
+            </div>
+        </div>
+
+        <!-- Bloque Top Lugares -->
+        <div class="info-box places-box">
+            <h2>Top Lugares</h2>
+            <div class="places-grid">
+                
+                <div class="place-card">
+                    <div class="place-img">
+                        <!-- cambiar ruta de imagen -->
+                        <img src="imagen.jpg" alt="Catedral de Santiago">
+                    </div>
+                    <span>Catedral de Santiago</span>
+                </div>
+
+                <div class="place-card">
+                    <div class="place-img">
+                        <!-- cambiar ruta de imagen -->
+                        <img src="imagen.jpg" alt="Museo de las Aves">
+                    </div>
+                    <span>Museo de las Aves</span>
+                </div>
+
+                <div class="place-card">
+                    <div class="place-img">
+                        <!-- cambiar ruta de imagen -->
+                        <img src="imagen.jpg" alt="Restaurantes">
+                    </div>
+                    <span>Restaurantes</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
