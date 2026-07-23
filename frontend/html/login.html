@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explora Saltillo - Iniciar Sesión</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado / Navegación -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>SALTURI<br><span>SALTILLO</span></h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Eventos</a>
+            <a href="#">Turismo</a>
+            <a href="#">Historia</a>
+            <a href="#">Contacto</a>
+        </nav>
+        <button type="button" class="btn-login">Iniciar Sesión</button>
+    </header>
+
+    <!-- Sección Principal con Fondo -->
+    <section class="hero-section hero-login">
+        <!-- Tarjeta / Modal de Login -->
+        <div class="login-card">
+            
+            <!-- Ilustración Izquierda -->
+            <div class="login-illustration">
+                <!-- ruta imagen -->
+                <img src="../images/LoginSaltillo.jpg" alt="Ilustración Saltillo">
+            </div>
+
+            <!-- Formulario Derecha -->
+            <div class="login-form-container">
+                <h2>Iniciar Sesión en<br>SALTURI</h2>
+
+                <form class="login-form">
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <input type="email" placeholder="Correo Electrónico" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" placeholder="Contraseña" required>
+                        <i class="fa-regular fa-eye-slash toggle-password"></i>
+                    </div>
+
+                    <a href="#" class="forgot-password">olvidé mi contraseña</a>
+
+                    <button type="button" class="btn-primary btn-submit">Entrar</button>
+
+                    <div class="divider">
+                        <span>o iniciar con</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="btn-social">
+                            <i class="fa-brands fa-facebook"></i> Facebook
+                        </button>
+                        <button type="button" class="btn-social">
+                            <i class="fa-brands fa-google"></i> Google
+                        </button>
+                    </div>
+
+                    <p class="register-text">
+                        No tienes cuenta? <a href="#">Regístrate</a>
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
