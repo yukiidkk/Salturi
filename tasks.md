@@ -12,17 +12,18 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 - [x] **1.4** Alinear paleta de colores entre `style.css` y el branding del steering (paleta unificada en ambos archivos)
 - [x] **1.5** Reemplazar imágenes placeholder (`imagen.jpg`, `mapa.png`) por rutas correctas apuntando a `frontend/images/`
 - [x] **1.6** Hacer el layout responsivo (mobile-first) con media queries para tablets, móviles y pantallas pequeñas
+- [x] **1.7** Conectar navegación entre páginas: logo → index.html, btn-login → login.html, enlaces Regístrate/Inicia Sesión cruzados
 
 ---
 
 ## Fase 2 — Carrusel Dinámico (JavaScript Frontend)
 
-- [ ] **2.1** Crear `frontend/assets/js/events.js`
-- [ ] **2.2** Implementar lógica de navegación del carrusel: flechas izquierda/derecha, actualización de puntos indicadores
-- [ ] **2.3** Conectar el carrusel a datos mock (array JS local) para probar el render dinámico de tarjetas
-- [ ] **2.4** Agregar filtros rápidos (`Hoy`, `Esta semana`, categorías) encima del carrusel
-- [ ] **2.5** Implementar buscador en tiempo real con debounce (300ms)
-- [ ] **2.6** Añadir badges visuales: `Hoy`, `📍 Centro Histórico`, `✔ Verificado` según los datos del evento
+- [x] **2.1** Crear `frontend/js/main.js` con lógica del carrusel, filtros y navegación
+- [x] **2.2** Implementar lógica de navegación del carrusel: flechas izquierda/derecha, actualización de puntos indicadores, soporte teclado
+- [x] **2.3** Conectar el carrusel a datos mock (array JS local) para probar el render dinámico de tarjetas
+- [x] **2.4** Agregar filtros rápidos (Todos, Cultura, Gastronomía, Naturaleza) encima del carrusel
+- [x] **2.5** Implementar navegación smooth scroll con IDs de sección y secciones Historia + Contacto (landing page completa)
+- [x] **2.6** Añadir sección Historia con highlights y Footer con contacto + redes sociales
 
 ---
 

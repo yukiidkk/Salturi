@@ -13,19 +13,29 @@
     <!-- Encabezado / Navegación -->
     <header class="navbar">
         <div class="logo">
-            <h1>SALTURI<br><span>SALTILLO</span></h1>
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1>SALTURI<br><span>SALTILLO</span></h1>
+            </a>
         </div>
         <nav class="nav-links">
-            <a href="#" class="active">Eventos</a>
-            <a href="#">Turismo</a>
-            <a href="#">Historia</a>
-            <a href="#">Contacto</a>
+            <a href="#eventos" class="active">Eventos</a>
+            <a href="#turismo">Turismo</a>
+            <a href="#historia">Historia</a>
+            <a href="#contacto">Contacto</a>
         </nav>
-        <button type="button" class="btn-login">Iniciar Sesión</button>
+        <button type="button" class="btn-login" onclick="window.location.href='login.html'">Iniciar Sesión</button>
     </header>
 
+    <!-- Filtros de Categoría -->
+    <section class="filters-container">
+        <button type="button" class="filter-btn filter-active" data-category="todos">Todos</button>
+        <button type="button" class="filter-btn" data-category="cultura">Cultura</button>
+        <button type="button" class="filter-btn" data-category="gastronomia">Gastronomía</button>
+        <button type="button" class="filter-btn" data-category="naturaleza">Naturaleza</button>
+    </section>
+
     <!-- Sección Principal / Carrusel de Eventos -->
-    <section class="hero-section">
+    <section id="eventos" class="hero-section">
         <div class="wave-bg"></div>
 
         <!-- Botón Carrusel Izquierdo -->
@@ -80,7 +90,7 @@
     </section>
 
     <!-- Sección Inferior: Mapa y Top Lugares -->
-    <section class="bottom-section">
+    <section id="turismo" class="bottom-section">
         <!-- Bloque Explora el Mapa -->
         <div class="info-box map-box">
             <h2>Explora el Mapa</h2>
@@ -119,5 +129,73 @@
         </div>
     </section>
 
+    <!-- Sección Historia -->
+    <section id="historia" class="info-section">
+        <div class="historia-container">
+            <h2>Historia y Cultura de Saltillo</h2>
+            <div class="historia-content">
+                <div class="historia-text">
+                    <p>Fundada en 1577, <strong>Santiago de Saltillo</strong> es una de las ciudades más antiguas del norte de México. Su Centro Histórico alberga joyas arquitectónicas como la Catedral de Santiago, construida en estilo barroco churrigueresco durante el siglo XVIII.</p>
+                    <p>Saltillo es reconocida por su tradición artesanal en sarapes, su gastronomía norteña y su riqueza cultural que mezcla influencias indígenas tlaxcaltecas con la herencia colonial española.</p>
+                    <p>Hoy, la ciudad es un polo educativo y cultural del noreste, con museos de clase mundial como el Museo del Desierto y el Museo de las Aves de México, además de una vibrante escena de eventos y festivales durante todo el año.</p>
+                </div>
+                <div class="historia-highlights">
+                    <div class="highlight-card">
+                        <i class="fa-solid fa-landmark"></i>
+                        <h4>+445 años</h4>
+                        <span>de historia</span>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fa-solid fa-museum"></i>
+                        <h4>12+ museos</h4>
+                        <span>para explorar</span>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <h4>50+ eventos</h4>
+                        <span>al año</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="footer-section">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>SALTURI</h2>
+                <p>Tu plataforma para descubrir eventos, turismo y la cultura de Saltillo, Coahuila.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <a href="#eventos">Eventos</a>
+                <a href="#turismo">Turismo</a>
+                <a href="#historia">Historia</a>
+                <a href="login.html">Iniciar Sesión</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contacto</h4>
+                <p><i class="fa-solid fa-envelope"></i> contacto@salturi.mx</p>
+                <p><i class="fa-solid fa-phone"></i> +52 844 123 4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> Saltillo, Coahuila, México</p>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SALTURI. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script principal -->
+    <script src="../js/main.js"></script>
 </body>
 </html>
