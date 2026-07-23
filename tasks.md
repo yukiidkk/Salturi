@@ -9,9 +9,9 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 - [x] **1.1** Crear estructura de carpetas `frontend/html/` y `frontend/css/`
 - [x] **1.2** Construir `index.html` con navbar, carrusel hero (3 tarjetas) y sección inferior (mapa + top lugares)
 - [x] **1.3** Crear `style.css` con variables de color, layout de navbar, cards del carrusel y grid de lugares
-- [ ] **1.4** Alinear paleta de colores entre `style.css` y el branding del steering (`#C85A32` terracota, `#1B3B6F` índigo, `#F5F3EF` fondo)
-- [ ] **1.5** Reemplazar imágenes placeholder (`imagen.jpg`, `mapa.png`) por assets reales o imágenes de ejemplo en `frontend/assets/`
-- [ ] **1.6** Hacer el layout responsivo (mobile-first) con media queries o Tailwind breakpoints
+- [x] **1.4** Alinear paleta de colores entre `style.css` y el branding del steering (paleta unificada en ambos archivos)
+- [x] **1.5** Reemplazar imágenes placeholder (`imagen.jpg`, `mapa.png`) por rutas correctas apuntando a `frontend/images/`
+- [x] **1.6** Hacer el layout responsivo (mobile-first) con media queries para tablets, móviles y pantallas pequeñas
 
 ---
 

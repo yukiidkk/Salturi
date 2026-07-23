@@ -6,10 +6,23 @@ Desarrollar una plataforma web para la comunidad local y turistas de Saltillo qu
 ---
 
 ## 2. Paleta de Colores & Diseño de Interfaz (Branding Saltillo)
-* **Primario:** Terracota (`#C85A32`) - Inspirado en la alfarería y arquitectura del Centro Histórico.
-* **Secundario:** Ocre / Sol (`#E0A96D`) - Para badges de " Hoy", calificaciones e hitos.
-* **Fondo:** Blanco Hueso / Beige Cantera (`#F5F3EF`) - Estilo cálido y legible.
-* **Acento:** Azul Índigo (`#1B3B6F`) - Para navegación, headers y detalles de alto contraste.
+
+### Variables CSS oficiales del proyecto:
+| Variable         | Valor     | Uso                                              |
+|------------------|-----------|--------------------------------------------------|
+| `--bg-main`      | `#EAE3DC` | Fondo general del body (beige cálido)            |
+| `--navy-blue`    | `#5FA7A4` | Navbar, headers, textos principales, bordes      |
+| `--terracotta`   | `#F18D4E` | Botones CTA, hero section, badges, acciones      |
+| `--card-bg`      | `#F8F5F0` | Fondo de tarjetas y contenedores internos        |
+| `--text-color`   | `#5FA7A4` | Color base de texto (coincide con navy-blue)     |
+| `--white`        | `#FFFFFF` | Texto sobre fondos oscuros, contrastes           |
+
+### Concepto visual:
+* **Fondo beige cálido** (`#EAE3DC`) — Inspirado en la cantera del Centro Histórico de Saltillo.
+* **Azul-verde teal** (`#5FA7A4`) — Para navegación, headers y detalles de alto contraste.
+* **Terracota anaranjado** (`#F18D4E`) — Botones de acción, hero section y elementos destacados. Inspirado en la alfarería local.
+* **Blanco hueso** (`#F8F5F0`) — Fondo de tarjetas para separar capas de contenido.
+
 * **Layout Principal:** Feed superior interactivo tipo banner carrusel deslizable horizontalmente para eventos destacados, seguido por secciones de mapa y navegación superior (Eventos, Turismo, Historia, Contacto, Iniciar Sesión).
 
 ---

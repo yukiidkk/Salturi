@@ -1,11 +1,12 @@
 /* --- RESET GENERAL Y VARIABLES DE COLOR --- */
+/* Paleta oficial SALTURI — sincronizada con steering.md */
 :root {
-    --bg-main: #EAE3DC;
-    --navy-blue: #5FA7A4;
-    --terracotta: #F18D4E;
-    --card-bg: #F8F5F0;
-    --text-color: #5FA7A4;
-    --white: #FFFFFF;
+    --bg-main: #EAE3DC;       /* Fondo general — beige cantera */
+    --navy-blue: #5FA7A4;     /* Navbar, headers, textos */
+    --terracotta: #F18D4E;    /* Botones CTA, hero, badges */
+    --card-bg: #F8F5F0;       /* Fondo de tarjetas */
+    --text-color: #5FA7A4;    /* Color base de texto */
+    --white: #FFFFFF;         /* Texto sobre fondos oscuros */
 }
 
 * {
@@ -505,4 +506,161 @@ body {
     color: var(--navy-blue);
     font-weight: 700;
     text-decoration: underline;
+}
+
+
+/* =============================================
+   RESPONSIVE — Mobile First Breakpoints
+   ============================================= */
+
+/* Tablets y pantallas medianas (max 1024px) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .left-arrow { left: 1.5rem; }
+    .right-arrow { right: 1.5rem; }
+
+    .carousel-container {
+        gap: 1rem;
+    }
+
+    .card-side {
+        width: 200px;
+    }
+
+    .card-featured {
+        width: 380px;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+    }
+
+    .login-card {
+        max-width: 90%;
+    }
+}
+
+/* Móviles (max 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 1rem 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .btn-login {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    /* Carrusel: ocultar tarjetas laterales en móvil */
+    .card-side {
+        display: none;
+    }
+
+    .card-featured {
+        width: 100%;
+        max-width: 360px;
+        transform: scale(1);
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .left-arrow { left: 0.8rem; }
+    .right-arrow { right: 0.8rem; }
+
+    .hero-section {
+        padding: 2rem 1rem 2rem;
+    }
+
+    /* Sección inferior: una columna */
+    .bottom-section {
+        flex-direction: column;
+        margin: 3rem auto 1.5rem;
+    }
+
+    .places-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Login/Register card: stack vertical */
+    .login-card {
+        flex-direction: column;
+        max-width: 95%;
+        padding: 1.5rem;
+    }
+
+    .login-illustration {
+        display: none;
+    }
+
+    .login-form-container h2 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+}
+
+/* Móviles pequeños (max 480px) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo h1 {
+        font-size: 0.9rem;
+    }
+
+    .logo span {
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.78rem;
+    }
+
+    .card-featured {
+        max-width: 100%;
+    }
+
+    .featured-img {
+        height: 150px;
+    }
+
+    .card-featured h2 {
+        font-size: 1.05rem;
+    }
+
+    .places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .place-img {
+        height: 160px;
+    }
+
+    .social-login {
+        flex-direction: column;
+    }
 }

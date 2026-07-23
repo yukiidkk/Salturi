@@ -179,17 +179,18 @@ reviews (
 
 ---
 
-## Paleta de colores (variables CSS ya definidas)
+## Paleta de colores (unificada — steering.md y style.css sincronizados)
 
-| Variable         | Valor     | Uso                              |
-|------------------|-----------|----------------------------------|
-| `--bg-main`      | `#EAE3DC` | Fondo general                    |
-| `--navy-blue`    | `#5FA7A4` | Headers, textos, navbar          |
-| `--terracotta`   | `#F18D4E` | Botones, hero, badges, acciones  |
-| `--card-bg`      | `#F8F5F0` | Fondo de tarjetas                |
-| `--white`        | `#FFFFFF` | Texto sobre fondo oscuro         |
+| Variable         | Valor     | Uso                                          |
+|------------------|-----------|----------------------------------------------|
+| `--bg-main`      | `#EAE3DC` | Fondo general del body (beige cantera)       |
+| `--navy-blue`    | `#5FA7A4` | Navbar, headers, textos principales, bordes  |
+| `--terracotta`   | `#F18D4E` | Botones CTA, hero section, badges, acciones  |
+| `--card-bg`      | `#F8F5F0` | Fondo de tarjetas y contenedores internos    |
+| `--text-color`   | `#5FA7A4` | Color base de texto (= navy-blue)            |
+| `--white`        | `#FFFFFF` | Texto sobre fondos oscuros                   |
 
-> Nota: el steering original define terracota como `#C85A32` e índigo como `#1B3B6F`. El CSS actual usa variantes más claras. Alinear ambos es una tarea a resolver en la fase de diseño visual.
+> Paleta alineada entre `steering.md` y `style.css` — no hay discrepancias pendientes.
 
 ---
 
