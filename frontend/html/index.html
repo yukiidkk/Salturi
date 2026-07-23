@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <!-- Iconos de FontAwesome para las flechas de navegación -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 <body>
 
@@ -90,13 +92,32 @@
     </section>
 
     <!-- Sección Inferior: Mapa y Top Lugares -->
-    <section id="turismo" class="bottom-section">
-        <!-- Bloque Explora el Mapa -->
-        <div class="info-box map-box">
-            <h2>Explora el Mapa</h2>
-            <div class="map-illustration">
-                <img src="../images/mapa-placeholder.png" alt="Mapa interactivo">
+    <section id="turismo" class="bottom-section turismo-full">
+        <!-- Bloque Mapa con Filtros -->
+        <div class="map-wrapper">
+            <h2 class="section-title">Explora el Mapa</h2>
+            
+            <!-- Filtros del mapa -->
+            <div class="map-filters">
+                <button type="button" class="map-filter-btn map-filter-active" data-filter="todos">
+                    <i class="fa-solid fa-map-location-dot"></i> Todos
+                </button>
+                <button type="button" class="map-filter-btn" data-filter="museo">
+                    <i class="fa-solid fa-landmark"></i> Museos y Cultura
+                </button>
+                <button type="button" class="map-filter-btn" data-filter="cafeteria">
+                    <i class="fa-solid fa-mug-hot"></i> Cafeterías
+                </button>
+                <button type="button" class="map-filter-btn" data-filter="restaurante">
+                    <i class="fa-solid fa-utensils"></i> Restaurantes y Bares
+                </button>
+                <button type="button" class="map-filter-btn" data-filter="naturaleza">
+                    <i class="fa-solid fa-tree"></i> Parques y Naturaleza
+                </button>
             </div>
+
+            <!-- Mapa Leaflet -->
+            <div id="map" class="map-container"></div>
         </div>
 
         <!-- Bloque Top Lugares -->
@@ -195,6 +216,10 @@
         </div>
     </footer>
 
+    <!-- Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Script del mapa -->
+    <script src="../js/map.js"></script>
     <!-- Script principal -->
     <script src="../js/main.js"></script>
 </body>

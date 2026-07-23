@@ -295,10 +295,63 @@ body {
     z-index: 5;
 }
 
-.info-box {
+.bottom-section.turismo-full {
+    max-width: 1200px;
+    flex-direction: column;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--navy-blue);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+/* --- MAPA WRAPPER --- */
+.map-wrapper {
+    background-color: var(--card-bg);
     border-radius: 20px;
     padding: 1.5rem;
-    flex: 1;
+}
+
+/* --- FILTROS DEL MAPA --- */
+.map-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.map-filter-btn {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    border: 1.5px solid rgba(95, 167, 164, 0.3);
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.map-filter-btn:hover {
+    border-color: var(--navy-blue);
+    background-color: rgba(95, 167, 164, 0.05);
+}
+
+.map-filter-btn.map-filter-active {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    border-color: var(--navy-blue);
+}
+
+.map-filter-btn i {
+    font-size: 0.85rem;
 }
 
 /* Bloque Mapa */
@@ -314,18 +367,130 @@ body {
     font-weight: 800;
 }
 
-.map-illustration {
+.map-container {
     width: 100%;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 450px;
+    border-radius: 14px;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.map-illustration img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+/* --- MARCADORES PERSONALIZADOS --- */
+.custom-map-marker {
+    background: transparent;
+    border: none;
+}
+
+.marker-pin {
+    width: 36px;
+    height: 36px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    border: 3px solid var(--white);
+}
+
+.marker-pin i {
+    transform: rotate(45deg);
+    color: var(--white);
+    font-size: 0.75rem;
+}
+
+/* Popups del mapa */
+.salturi-popup .leaflet-popup-content-wrapper {
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.map-popup h3 {
+    color: var(--navy-blue);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.popup-zone {
+    font-size: 0.7rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.popup-header {
+    margin-bottom: 0.5rem;
+}
+
+.map-popup p {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.popup-btn {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.popup-btn:hover {
+    background-color: var(--terracotta);
+}
+
+.popup-fav {
+    background-color: transparent;
+    border: 1.5px solid var(--terracotta);
+    color: var(--terracotta);
+}
+
+.popup-fav:hover {
+    background-color: var(--terracotta);
+    color: var(--white);
+}
+
+/* Toast notifications */
+.toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: var(--navy-blue);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 9999;
+}
+
+.toast-notification.toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Info box genérica */
+.info-box {
+    border-radius: 20px;
+    padding: 1.5rem;
+    flex: 1;
 }
 
 /* Bloque Top Lugares */
@@ -733,6 +898,15 @@ body {
         flex-direction: column;
     }
 
+    .map-container {
+        height: 350px;
+    }
+
+    .map-filter-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
     .login-card {
         max-width: 90%;
     }
@@ -802,6 +976,19 @@ body {
     .bottom-section {
         flex-direction: column;
         margin: 3rem auto 1.5rem;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+
+    .map-filters {
+        gap: 0.4rem;
+    }
+
+    .map-filter-btn {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.7rem;
     }
 
     .places-grid {

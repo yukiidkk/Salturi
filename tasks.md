@@ -29,12 +29,13 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 
 ## Fase 3 — Mapa Interactivo (JavaScript Frontend)
 
-- [ ] **3.1** Crear `frontend/assets/js/map.js`
-- [ ] **3.2** Reemplazar `<img src="mapa.png">` por `<div id="map">` en `index.html`
-- [ ] **3.3** Inicializar Mapbox GL JS (o Leaflet.js como alternativa gratuita) centrado en Saltillo
-- [ ] **3.4** Cargar marcadores desde datos mock con íconos por categoría (restaurante, museo, bar, etc.)
-- [ ] **3.5** Implementar popup/modal al hacer clic en marcador: nombre, imagen, calificación y botón "¿Cómo llegar?"
-- [ ] **3.6** Agregar botón "Guardar en Favoritos" que persista en `localStorage`
+- [x] **3.1** Crear `frontend/js/map.js` con lógica completa del mapa interactivo
+- [x] **3.2** Reemplazar imagen estática por `<div id="map">` con Leaflet.js (CDN) en `index.html`
+- [x] **3.3** Inicializar Leaflet.js centrado en Saltillo (25.4200, -100.9950) zoom 12 abarcando Norte a Sur
+- [x] **3.4** Cargar 28 marcadores con íconos FontAwesome por categoría (museo, cafetería, restaurante, naturaleza) distribuidos Norte/Centro/Sur
+- [x] **3.5** Implementar popup al hacer clic en marcador: nombre, zona, descripción y botón "¿Cómo llegar?" (Google Maps)
+- [x] **3.6** Agregar botón "Guardar en Favoritos" que persiste en `localStorage` con toast de confirmación
+- [x] **3.7** Filtros interactivos del mapa (Todos, Museos, Cafeterías, Restaurantes, Parques) con zoom dinámico a marcadores visibles
 
 ---
 
