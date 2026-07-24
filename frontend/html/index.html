@@ -20,20 +20,21 @@
             </a>
         </div>
         <nav class="nav-links">
-            <a href="#eventos" class="active">Eventos</a>
-            <a href="#turismo">Turismo</a>
-            <a href="#historia">Historia</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#eventos" class="active" data-i18n="nav_eventos">Eventos</a>
+            <a href="#turismo" data-i18n="nav_turismo">Turismo</a>
+            <a href="#historia" data-i18n="nav_historia">Historia</a>
+            <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
         </nav>
-        <button type="button" class="btn-login" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+        <button type="button" class="btn-login" onclick="window.location.href='login.html'" data-i18n="login">Iniciar Sesión</button>
+        <button type="button" id="btn-lang" class="btn-lang">EN 🇺🇸</button>
     </header>
 
     <!-- Filtros de Categoría -->
     <section class="filters-container">
-        <button type="button" class="filter-btn filter-active" data-category="todos">Todos</button>
-        <button type="button" class="filter-btn" data-category="cultura">Cultura</button>
-        <button type="button" class="filter-btn" data-category="gastronomia">Gastronomía</button>
-        <button type="button" class="filter-btn" data-category="naturaleza">Naturaleza</button>
+        <button type="button" class="filter-btn filter-active" data-category="todos" data-i18n="cat_all">Todos</button>
+        <button type="button" class="filter-btn" data-category="cultura" data-i18n="cat_culture">Cultura</button>
+        <button type="button" class="filter-btn" data-category="gastronomia" data-i18n="cat_gastro">Gastronomía</button>
+        <button type="button" class="filter-btn" data-category="naturaleza" data-i18n="cat_nature">Naturaleza</button>
     </section>
 
     <!-- Sección Principal / Carrusel de Eventos -->
@@ -91,28 +92,48 @@
         </div>
     </section>
 
+    <!-- Sección Clima en Tiempo Real -->
+    <section id="clima" class="weather-section">
+        <h2 class="section-title" data-i18n="weather_title">Clima Actual en Saltillo</h2>
+        <div class="weather-container">
+            <!-- Clima actual -->
+            <div class="weather-current" id="weather-current">
+                <div class="weather-loading">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span data-i18n="weather_loading">Cargando clima...</span>
+                </div>
+            </div>
+            <!-- Pronóstico 3 días -->
+            <div class="weather-forecast" id="weather-forecast">
+            </div>
+        </div>
+    </section>
+
     <!-- Sección Inferior: Mapa y Top Lugares -->
     <section id="turismo" class="bottom-section turismo-full">
         <!-- Bloque Mapa con Filtros -->
         <div class="map-wrapper">
-            <h2 class="section-title">Explora el Mapa</h2>
+            <h2 class="section-title" data-i18n="map_title">Explora el Mapa</h2>
             
             <!-- Filtros del mapa -->
             <div class="map-filters">
                 <button type="button" class="map-filter-btn map-filter-active" data-filter="todos">
-                    <i class="fa-solid fa-map-location-dot"></i> Todos
+                    <i class="fa-solid fa-map-location-dot"></i> <span data-i18n="filter_all">Todos</span>
                 </button>
                 <button type="button" class="map-filter-btn" data-filter="museo">
-                    <i class="fa-solid fa-landmark"></i> Museos y Cultura
+                    <i class="fa-solid fa-landmark"></i> <span data-i18n="filter_museums">Museos y Cultura</span>
                 </button>
                 <button type="button" class="map-filter-btn" data-filter="cafeteria">
-                    <i class="fa-solid fa-mug-hot"></i> Cafeterías
+                    <i class="fa-solid fa-mug-hot"></i> <span data-i18n="filter_cafes">Cafeterías</span>
                 </button>
                 <button type="button" class="map-filter-btn" data-filter="restaurante">
-                    <i class="fa-solid fa-utensils"></i> Restaurantes y Bares
+                    <i class="fa-solid fa-utensils"></i> <span data-i18n="filter_restaurants">Restaurantes y Bares</span>
                 </button>
                 <button type="button" class="map-filter-btn" data-filter="naturaleza">
-                    <i class="fa-solid fa-tree"></i> Parques y Naturaleza
+                    <i class="fa-solid fa-tree"></i> <span data-i18n="filter_parks">Parques y Naturaleza</span>
+                </button>
+                <button type="button" class="map-filter-btn map-filter-emergency" data-filter="emergencia">
+                    <i class="fa-solid fa-hospital"></i> <span data-i18n="filter_emergency">Emergencias</span>
                 </button>
             </div>
 
@@ -153,28 +174,28 @@
     <!-- Sección Historia -->
     <section id="historia" class="info-section">
         <div class="historia-container">
-            <h2>Historia y Cultura de Saltillo</h2>
+            <h2 data-i18n="historia_title">Historia y Cultura de Saltillo</h2>
             <div class="historia-content">
                 <div class="historia-text">
-                    <p>Fundada en 1577, <strong>Santiago de Saltillo</strong> es una de las ciudades más antiguas del norte de México. Su Centro Histórico alberga joyas arquitectónicas como la Catedral de Santiago, construida en estilo barroco churrigueresco durante el siglo XVIII.</p>
-                    <p>Saltillo es reconocida por su tradición artesanal en sarapes, su gastronomía norteña y su riqueza cultural que mezcla influencias indígenas tlaxcaltecas con la herencia colonial española.</p>
-                    <p>Hoy, la ciudad es un polo educativo y cultural del noreste, con museos de clase mundial como el Museo del Desierto y el Museo de las Aves de México, además de una vibrante escena de eventos y festivales durante todo el año.</p>
+                    <p data-i18n="historia_p1">Fundada en 1577, Santiago de Saltillo es una de las ciudades más antiguas del norte de México. Su Centro Histórico alberga joyas arquitectónicas como la Catedral de Santiago, construida en estilo barroco churrigueresco durante el siglo XVIII.</p>
+                    <p data-i18n="historia_p2">Saltillo es reconocida por su tradición artesanal en sarapes, su gastronomía norteña y su riqueza cultural que mezcla influencias indígenas tlaxcaltecas con la herencia colonial española.</p>
+                    <p data-i18n="historia_p3">Hoy, la ciudad es un polo educativo y cultural del noreste, con museos de clase mundial como el Museo del Desierto y el Museo de las Aves de México, además de una vibrante escena de eventos y festivales durante todo el año.</p>
                 </div>
                 <div class="historia-highlights">
                     <div class="highlight-card">
                         <i class="fa-solid fa-landmark"></i>
                         <h4>+445 años</h4>
-                        <span>de historia</span>
+                        <span data-i18n="highlight_history">de historia</span>
                     </div>
                     <div class="highlight-card">
                         <i class="fa-solid fa-museum"></i>
                         <h4>12+ museos</h4>
-                        <span>para explorar</span>
+                        <span data-i18n="highlight_museums">para explorar</span>
                     </div>
                     <div class="highlight-card">
                         <i class="fa-solid fa-calendar-days"></i>
                         <h4>50+ eventos</h4>
-                        <span>al año</span>
+                        <span data-i18n="highlight_events">al año</span>
                     </div>
                 </div>
             </div>
@@ -183,26 +204,49 @@
 
     <!-- Footer / Contacto -->
     <footer id="contacto" class="footer-section">
+        <!-- Tarjeta de Emergencias -->
+        <div class="emergency-card">
+            <h3 data-i18n="emergency_title">🚨 Contactos de Emergencia — Saltillo</h3>
+            <div class="emergency-numbers">
+                <div class="emergency-item">
+                    <span class="emergency-number">911</span>
+                    <span class="emergency-label" data-i18n="emergency_general">Emergencias Generales</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="emergency-number">089</span>
+                    <span class="emergency-label" data-i18n="emergency_report">Denuncia Anónima</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="emergency-number">844 412 1206</span>
+                    <span class="emergency-label" data-i18n="emergency_redcross">Cruz Roja Saltillo</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="emergency-number">844 415 4222</span>
+                    <span class="emergency-label" data-i18n="emergency_fire">Bomberos Saltillo</span>
+                </div>
+            </div>
+        </div>
+
         <div class="footer-container">
             <div class="footer-brand">
                 <h2>SALTURI</h2>
-                <p>Tu plataforma para descubrir eventos, turismo y la cultura de Saltillo, Coahuila.</p>
+                <p data-i18n="footer_desc">Tu plataforma para descubrir eventos, turismo y la cultura de Saltillo, Coahuila.</p>
             </div>
             <div class="footer-links">
-                <h4>Navegación</h4>
-                <a href="#eventos">Eventos</a>
-                <a href="#turismo">Turismo</a>
-                <a href="#historia">Historia</a>
-                <a href="login.html">Iniciar Sesión</a>
+                <h4 data-i18n="footer_nav">Navegación</h4>
+                <a href="#eventos" data-i18n="nav_eventos">Eventos</a>
+                <a href="#turismo" data-i18n="nav_turismo">Turismo</a>
+                <a href="#historia" data-i18n="nav_historia">Historia</a>
+                <a href="login.html" data-i18n="login">Iniciar Sesión</a>
             </div>
             <div class="footer-contact">
-                <h4>Contacto</h4>
+                <h4 data-i18n="footer_contact">Contacto</h4>
                 <p><i class="fa-solid fa-envelope"></i> contacto@salturi.mx</p>
                 <p><i class="fa-solid fa-phone"></i> +52 844 123 4567</p>
                 <p><i class="fa-solid fa-location-dot"></i> Saltillo, Coahuila, México</p>
             </div>
             <div class="footer-social">
-                <h4>Síguenos</h4>
+                <h4 data-i18n="footer_follow">Síguenos</h4>
                 <div class="social-icons">
                     <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -212,7 +256,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 SALTURI. Todos los derechos reservados.</p>
+            <p>&copy; 2025 SALTURI. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
         </div>
     </footer>
 
@@ -220,6 +264,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Script del mapa -->
     <script src="../js/map.js"></script>
+    <!-- Traducción ES/EN -->
+    <script src="../js/i18n.js"></script>
     <!-- Script principal -->
     <script src="../js/main.js"></script>
 </body>

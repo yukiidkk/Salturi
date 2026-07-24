@@ -35,7 +35,12 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 - [x] **3.4** Cargar 28 marcadores con íconos FontAwesome por categoría (museo, cafetería, restaurante, naturaleza) distribuidos Norte/Centro/Sur
 - [x] **3.5** Implementar popup al hacer clic en marcador: nombre, zona, descripción y botón "¿Cómo llegar?" (Google Maps)
 - [x] **3.6** Agregar botón "Guardar en Favoritos" que persiste en `localStorage` con toast de confirmación
-- [x] **3.7** Filtros interactivos del mapa (Todos, Museos, Cafeterías, Restaurantes, Parques) con zoom dinámico a marcadores visibles
+- [x] **3.7** Filtros interactivos del mapa (Todos, Museos, Cafeterías, Restaurantes, Parques, Emergencias) con zoom dinámico a marcadores visibles
+- [x] **3.8** Agregar 5 puntos de emergencia (Hospital General, IMSS, Cruz Roja, Bomberos, Comisaría) con pines rojos y filtro dedicado
+- [x] **3.9** Crear tarjeta de contactos de emergencia en footer (911, 089, Cruz Roja, Bomberos) con diseño destacado
+- [x] **3.10** Implementar sistema de traducción ES/EN (`frontend/js/i18n.js`) con botón en navbar y persistencia en localStorage
+- [x] **3.11** Ampliar diccionario i18n con traducciones completas (Historia, highlights, filtros, carrusel, footer) preservando nombres propios
+- [x] **3.12** Crear sección Clima en Tiempo Real (#clima) con Open-Meteo API: temperatura actual, sensación térmica, pronóstico 3 días y recomendaciones turísticas dinámicas
 
 ---
 

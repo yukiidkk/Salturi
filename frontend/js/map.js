@@ -26,6 +26,11 @@ const CATEGORIAS = {
         label: 'Parques y Naturaleza',
         color: '#2E7D32',
         icon: 'fa-tree'
+    },
+    emergencia: {
+        label: 'Emergencias',
+        color: '#D9534F',
+        icon: 'fa-hospital'
     }
 };
 
@@ -319,6 +324,58 @@ const lugaresData = [
         lng: -100.9750,
         description: "Entrada a la Sierra de Zapalinamé. Rutas de senderismo, biodiversidad y paisajes de montaña.",
         googleMapsUrl: "https://maps.google.com/?q=Canon+de+San+Lorenzo+Saltillo"
+    },
+
+    // ─── EMERGENCIAS ────────────────────────────────────
+    {
+        id: 29,
+        name: "Hospital General Saltillo",
+        category: "emergencia",
+        zone: "sur",
+        lat: 25.4050,
+        lng: -100.9950,
+        description: "Hospital público de segundo nivel. Urgencias 24 horas, consulta externa y especialidades médicas.",
+        googleMapsUrl: "https://maps.google.com/?q=Hospital+General+Saltillo"
+    },
+    {
+        id: 30,
+        name: "Hospital de Especialidades IMSS 2",
+        category: "emergencia",
+        zone: "centro",
+        lat: 25.4310,
+        lng: -100.9920,
+        description: "Hospital de alta especialidad del IMSS. Atención de urgencias, cirugía y medicina interna.",
+        googleMapsUrl: "https://maps.google.com/?q=IMSS+Especialidades+Saltillo"
+    },
+    {
+        id: 31,
+        name: "Cruz Roja Mexicana — Delegación Saltillo",
+        category: "emergencia",
+        zone: "centro",
+        lat: 25.4280,
+        lng: -101.0080,
+        description: "Ambulancias, atención prehospitalaria y primeros auxilios. Línea directa: 844 412 1206.",
+        googleMapsUrl: "https://maps.google.com/?q=Cruz+Roja+Saltillo"
+    },
+    {
+        id: 32,
+        name: "Estación Central de Bomberos",
+        category: "emergencia",
+        zone: "centro",
+        lat: 25.4220,
+        lng: -101.0090,
+        description: "Cuerpo de bomberos de Saltillo. Respuesta a incendios, rescates y materiales peligrosos. Tel: 844 415 4222.",
+        googleMapsUrl: "https://maps.google.com/?q=Bomberos+Saltillo"
+    },
+    {
+        id: 33,
+        name: "Comisaría de Seguridad y Protección Ciudadana",
+        category: "emergencia",
+        zone: "norte",
+        lat: 25.4410,
+        lng: -100.9850,
+        description: "Sede de la policía municipal. Reportes de seguridad y coordinación de patrullas. Línea: 911.",
+        googleMapsUrl: "https://maps.google.com/?q=Comisaria+Seguridad+Saltillo"
     }
 ];
 
