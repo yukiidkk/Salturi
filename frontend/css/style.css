@@ -350,8 +350,39 @@ body {
     border-color: var(--navy-blue);
 }
 
+.map-filter-btn.map-filter-emergency {
+    border-color: #D9534F;
+    color: #D9534F;
+}
+
+.map-filter-btn.map-filter-emergency:hover,
+.map-filter-btn.map-filter-emergency.map-filter-active {
+    background-color: #D9534F;
+    color: var(--white);
+    border-color: #D9534F;
+}
+
 .map-filter-btn i {
     font-size: 0.85rem;
+}
+
+/* --- BOTÓN DE IDIOMA --- */
+.btn-lang {
+    background-color: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    padding: 0.4rem 0.9rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 0.5rem;
+}
+
+.btn-lang:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--white);
 }
 
 /* Bloque Mapa */
@@ -786,6 +817,49 @@ body {
     color: var(--white);
     padding: 3rem 2rem 1rem;
     margin-top: 2rem;
+}
+
+/* Tarjeta de Emergencias */
+.emergency-card {
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, #D9534F, #c0392b);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 16px rgba(217, 83, 79, 0.3);
+}
+
+.emergency-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.emergency-numbers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.emergency-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.emergency-number {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.emergency-label {
+    font-size: 0.75rem;
+    opacity: 0.85;
+    font-weight: 500;
 }
 
 .footer-container {
