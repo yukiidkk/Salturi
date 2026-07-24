@@ -46,36 +46,36 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 
 ## Fase 4 — Backend Flask (API RESTful)
 
-- [ ] **4.1** Inicializar proyecto Python: `backend/app.py`, `backend/config.py`, `requirements.txt`
-- [ ] **4.2** Configurar Flask con CORS habilitado para el frontend
-- [ ] **4.3** Implementar `routes/events.py`:
+- [x] **4.1** Inicializar proyecto Python: `backend/app.py`, `backend/config.py`, `requirements.txt`
+- [x] **4.2** Configurar Flask con CORS habilitado para el frontend
+- [x] **4.3** Implementar `routes/events.py`:
   - `GET /api/v1/events` con filtros `date`, `category`, `q`
   - `POST /api/v1/events` (solo Organizer, requiere token)
-- [ ] **4.4** Implementar `routes/places.py`:
+- [x] **4.4** Implementar `routes/places.py`:
   - `GET /api/v1/places` con filtro `category`
   - `GET /api/v1/places/:id` con detalle y reseñas
-- [ ] **4.5** Implementar `routes/reviews.py`:
+- [x] **4.5** Implementar `routes/reviews.py`:
   - `POST /api/v1/reviews` (solo User autenticado)
-- [ ] **4.6** Implementar `routes/admin.py`:
+- [x] **4.6** Implementar `routes/admin.py`:
   - `GET /api/v1/admin/events/pending`
   - `PATCH /api/v1/admin/events/:id/status` (aprobar/rechazar)
-- [ ] **4.7** Crear `services/supabase_service.py` con helpers para CRUD en Supabase
+- [x] **4.7** Crear `services/supabase_service.py` con helpers para CRUD en Supabase
 
 ---
 
 ## Fase 5 — Base de Datos y Autenticación (Supabase)
 
-- [ ] **5.1** Crear proyecto en Supabase y obtener URL + anon key
-- [ ] **5.2** Ejecutar migraciones SQL: tablas `profiles`, `events`, `places`, `reviews`
-- [ ] **5.3** Configurar políticas RLS:
+- [x] **5.1** Crear proyecto en Supabase y obtener URL + anon key
+- [x] **5.2** Ejecutar migraciones SQL: tablas `profiles`, `events`, `places`, `reviews`
+- [x] **5.3** Configurar políticas RLS:
   - Visitante: solo lectura en `events` y `places` aprobados
   - User: insertar en `reviews`
   - Organizer: insertar en `events` (estado `pending`)
   - Admin: lectura/escritura total
-- [ ] **5.4** Crear `frontend/assets/js/auth.js` con Supabase Auth JS SDK
-- [ ] **5.5** Implementar modal de login (Google OAuth + Email/Password)
-- [ ] **5.6** Conectar sesión de usuario al frontend: mostrar avatar/nombre en navbar, cambiar botón "Iniciar Sesión" a "Mi Perfil"
-- [ ] **5.7** Actualizar "Guardar en Favoritos" para persistir en Supabase si el usuario está logueado
+- [x] **5.4** Crear `frontend/js/auth.js` con Supabase Auth JS SDK (CDN @supabase/supabase-js@2)
+- [x] **5.5** Implementar formularios de login y registro conectados a Supabase Auth (Email/Password + Google OAuth)
+- [x] **5.6** Conectar sesión de usuario al frontend: mostrar nombre en navbar, menú desplegable (Perfil, Favoritos, Cerrar Sesión)
+- [x] **5.7** Actualizar "Guardar en Favoritos" para persistir en Supabase si el usuario está logueado
 
 ---
 

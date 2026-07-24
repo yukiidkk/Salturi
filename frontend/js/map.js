@@ -432,6 +432,9 @@ function initMap() {
     // Recalcular tamaño del mapa
     setTimeout(() => map.invalidateSize(), 300);
 
+    // Inicializar geolocalización
+    initGeolocation();
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) map.invalidateSize();
@@ -524,21 +527,29 @@ function applyFilter(filter) {
 }
 
 // ============================================
-// FAVORITOS (localStorage)
+// FAVORITOS (localStorage + Supabase si hay sesión)
 // ============================================
-function toggleFavorite(id, name) {
+async function toggleFavorite(id, name) {
     let favorites = JSON.parse(localStorage.getItem('salturi_favorites') || '[]');
-
     const index = favorites.findIndex(f => f.id === id);
+
     if (index > -1) {
         favorites.splice(index, 1);
+        localStorage.setItem('salturi_favorites', JSON.stringify(favorites));
+        // Intentar remover de Supabase si hay sesión
+        if (typeof removeFavoriteFromSupabase === 'function') {
+            removeFavoriteFromSupabase(id);
+        }
         showToast(`${name} eliminado de favoritos`);
     } else {
         favorites.push({ id, name, addedAt: new Date().toISOString() });
+        localStorage.setItem('salturi_favorites', JSON.stringify(favorites));
+        // Intentar guardar en Supabase si hay sesión
+        if (typeof saveFavoriteToSupabase === 'function') {
+            saveFavoriteToSupabase(id, name);
+        }
         showToast(`${name} guardado en favoritos ❤️`);
     }
-
-    localStorage.setItem('salturi_favorites', JSON.stringify(favorites));
 }
 
 function showToast(message) {
@@ -555,6 +566,50 @@ function showToast(message) {
         toast.classList.remove('toast-visible');
         setTimeout(() => toast.remove(), 300);
     }, 2500);
+}
+
+// ============================================
+// GEOLOCALIZACIÓN EN TIEMPO REAL
+// ============================================
+let userLocationMarker = null;
+
+function initGeolocation() {
+    if (!navigator.geolocation || !map) return;
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+
+            // Crear ícono personalizado para ubicación del usuario
+            const userIcon = L.divIcon({
+                className: 'user-location-marker',
+                html: `
+                    <div class="user-pin-pulse"></div>
+                    <div class="user-pin-dot"></div>
+                `,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            // Agregar marcador
+            userLocationMarker = L.marker([latitude, longitude], { icon: userIcon })
+                .addTo(map)
+                .bindPopup('<strong>📍 Tú estás aquí</strong>')
+                .openPopup();
+
+            // Centrar mapa en la ubicación del usuario
+            map.setView([latitude, longitude], 14);
+        },
+        (error) => {
+            console.warn('Geolocalización no disponible:', error.message);
+            // No hacer nada — el mapa se queda centrado en Saltillo
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 8000,
+            maximumAge: 60000
+        }
+    );
 }
 
 // ============================================

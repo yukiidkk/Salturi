@@ -50,6 +50,10 @@ const translations = {
         // Carrusel - Botones
         btn_view_event: "Ver Evento",
 
+        // Favoritos panel
+        fav_title: "Mis Favoritos",
+        fav_empty: "Aún no tienes favoritos. Explora el mapa y guarda los lugares que más te gusten.",
+
         // Emergencias
         emergency_title: "🚨 Contactos de Emergencia — Saltillo",
         emergency_general: "Emergencias Generales",
@@ -112,6 +116,10 @@ const translations = {
         // Carrusel - Botones
         btn_view_event: "View Event",
 
+        // Favoritos panel
+        fav_title: "My Favorites",
+        fav_empty: "No favorites yet. Explore the map and save the places you like the most.",
+
         // Emergencias
         emergency_title: "🚨 Emergency Contacts — Saltillo",
         emergency_general: "General Emergencies",
@@ -144,6 +152,7 @@ function setLanguage(lang) {
     if (!dict) return;
 
     // Actualizar todos los elementos con data-i18n
+    // SKIP: el botón .btn-login si el usuario está logueado (no tiene data-i18n cuando logueado)
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) {
@@ -166,6 +175,11 @@ function setLanguage(lang) {
     }
     if (typeof renderWeather === 'function' && window._weatherData) {
         renderWeather(window._weatherData);
+    }
+
+    // Re-aplicar estado de autenticación (restaurar nombre en navbar)
+    if (typeof reapplyAuthState === 'function') {
+        reapplyAuthState();
     }
 }
 

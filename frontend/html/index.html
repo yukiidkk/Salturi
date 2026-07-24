@@ -16,7 +16,8 @@
     <header class="navbar">
         <div class="logo">
             <a href="index.html" style="text-decoration: none; color: inherit;">
-                <h1>SALTURI<br><span>SALTILLO</span></h1>
+                <h1>SalTurismo</h1>
+                <span class="slogan">¡A dónde vamos!?</span>
             </a>
         </div>
         <nav class="nav-links">
@@ -26,8 +27,29 @@
             <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
         </nav>
         <button type="button" class="btn-login" onclick="window.location.href='login.html'" data-i18n="login">Iniciar Sesión</button>
+        <button type="button" id="btn-favorites-star" class="btn-favorites-star hidden-no-auth" title="Mis Favoritos">
+            <i class="fa-solid fa-star"></i>
+        </button>
         <button type="button" id="btn-lang" class="btn-lang">EN 🇺🇸</button>
     </header>
+
+    <!-- Panel Lateral de Favoritos -->
+    <aside id="favorites-panel" class="favorites-panel">
+        <div class="favorites-panel-header">
+            <h3><i class="fa-solid fa-star"></i> <span data-i18n="fav_title">Mis Favoritos</span></h3>
+            <button type="button" id="btn-close-favorites" class="btn-close-favorites">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="favorites-list" class="favorites-list">
+            <!-- Renderizado dinámico por JS -->
+        </div>
+        <div id="favorites-empty" class="favorites-empty">
+            <i class="fa-regular fa-heart"></i>
+            <p data-i18n="fav_empty">Aún no tienes favoritos. Explora el mapa y guarda los lugares que más te gusten.</p>
+        </div>
+    </aside>
+    <div id="favorites-overlay" class="favorites-overlay"></div>
 
     <!-- Filtros de Categoría -->
     <section class="filters-container">
@@ -36,6 +58,13 @@
         <button type="button" class="filter-btn" data-category="gastronomia" data-i18n="cat_gastro">Gastronomía</button>
         <button type="button" class="filter-btn" data-category="naturaleza" data-i18n="cat_nature">Naturaleza</button>
     </section>
+
+    <!-- Wave divisor: blanco → verde (terracota) -->
+    <div class="wave-divider wave-top">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,40 C360,80 720,0 1440,40 L1440,80 L0,80 Z" fill="var(--terracotta)"/>
+        </svg>
+    </div>
 
     <!-- Sección Principal / Carrusel de Eventos -->
     <section id="eventos" class="hero-section">
@@ -91,6 +120,13 @@
             <span class="dot"></span>
         </div>
     </section>
+
+    <!-- Wave divisor: verde (terracota) → blanco -->
+    <div class="wave-divider wave-bottom">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,0 L0,40 C360,0 720,80 1440,40 L1440,0 Z" fill="var(--terracotta)"/>
+        </svg>
+    </div>
 
     <!-- Sección Clima en Tiempo Real -->
     <section id="clima" class="weather-section">
@@ -229,7 +265,7 @@
 
         <div class="footer-container">
             <div class="footer-brand">
-                <h2>SALTURI</h2>
+                <h2>SalTurismo</h2>
                 <p data-i18n="footer_desc">Tu plataforma para descubrir eventos, turismo y la cultura de Saltillo, Coahuila.</p>
             </div>
             <div class="footer-links">
@@ -262,10 +298,14 @@
 
     <!-- Leaflet.js -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Script del mapa -->
     <script src="../js/map.js"></script>
     <!-- Traducción ES/EN -->
     <script src="../js/i18n.js"></script>
+    <!-- Autenticación -->
+    <script src="../js/auth.js"></script>
     <!-- Script principal -->
     <script src="../js/main.js"></script>
 </body>
