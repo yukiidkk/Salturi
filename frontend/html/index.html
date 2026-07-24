@@ -92,6 +92,23 @@
         </div>
     </section>
 
+    <!-- Sección Clima en Tiempo Real -->
+    <section id="clima" class="weather-section">
+        <h2 class="section-title" data-i18n="weather_title">Clima Actual en Saltillo</h2>
+        <div class="weather-container">
+            <!-- Clima actual -->
+            <div class="weather-current" id="weather-current">
+                <div class="weather-loading">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span data-i18n="weather_loading">Cargando clima...</span>
+                </div>
+            </div>
+            <!-- Pronóstico 3 días -->
+            <div class="weather-forecast" id="weather-forecast">
+            </div>
+        </div>
+    </section>
+
     <!-- Sección Inferior: Mapa y Top Lugares -->
     <section id="turismo" class="bottom-section turismo-full">
         <!-- Bloque Mapa con Filtros -->
@@ -157,28 +174,28 @@
     <!-- Sección Historia -->
     <section id="historia" class="info-section">
         <div class="historia-container">
-            <h2 data-i18n="places_title">Historia y Cultura de Saltillo</h2>
+            <h2 data-i18n="historia_title">Historia y Cultura de Saltillo</h2>
             <div class="historia-content">
                 <div class="historia-text">
-                    <p>Fundada en 1577, <strong>Santiago de Saltillo</strong> es una de las ciudades más antiguas del norte de México. Su Centro Histórico alberga joyas arquitectónicas como la Catedral de Santiago, construida en estilo barroco churrigueresco durante el siglo XVIII.</p>
-                    <p>Saltillo es reconocida por su tradición artesanal en sarapes, su gastronomía norteña y su riqueza cultural que mezcla influencias indígenas tlaxcaltecas con la herencia colonial española.</p>
-                    <p>Hoy, la ciudad es un polo educativo y cultural del noreste, con museos de clase mundial como el Museo del Desierto y el Museo de las Aves de México, además de una vibrante escena de eventos y festivales durante todo el año.</p>
+                    <p data-i18n="historia_p1">Fundada en 1577, Santiago de Saltillo es una de las ciudades más antiguas del norte de México. Su Centro Histórico alberga joyas arquitectónicas como la Catedral de Santiago, construida en estilo barroco churrigueresco durante el siglo XVIII.</p>
+                    <p data-i18n="historia_p2">Saltillo es reconocida por su tradición artesanal en sarapes, su gastronomía norteña y su riqueza cultural que mezcla influencias indígenas tlaxcaltecas con la herencia colonial española.</p>
+                    <p data-i18n="historia_p3">Hoy, la ciudad es un polo educativo y cultural del noreste, con museos de clase mundial como el Museo del Desierto y el Museo de las Aves de México, además de una vibrante escena de eventos y festivales durante todo el año.</p>
                 </div>
                 <div class="historia-highlights">
                     <div class="highlight-card">
                         <i class="fa-solid fa-landmark"></i>
                         <h4>+445 años</h4>
-                        <span>de historia</span>
+                        <span data-i18n="highlight_history">de historia</span>
                     </div>
                     <div class="highlight-card">
                         <i class="fa-solid fa-museum"></i>
                         <h4>12+ museos</h4>
-                        <span>para explorar</span>
+                        <span data-i18n="highlight_museums">para explorar</span>
                     </div>
                     <div class="highlight-card">
                         <i class="fa-solid fa-calendar-days"></i>
                         <h4>50+ eventos</h4>
-                        <span>al año</span>
+                        <span data-i18n="highlight_events">al año</span>
                     </div>
                 </div>
             </div>

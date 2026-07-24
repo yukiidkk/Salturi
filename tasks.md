@@ -39,6 +39,8 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 - [x] **3.8** Agregar 5 puntos de emergencia (Hospital General, IMSS, Cruz Roja, Bomberos, Comisaría) con pines rojos y filtro dedicado
 - [x] **3.9** Crear tarjeta de contactos de emergencia en footer (911, 089, Cruz Roja, Bomberos) con diseño destacado
 - [x] **3.10** Implementar sistema de traducción ES/EN (`frontend/js/i18n.js`) con botón en navbar y persistencia en localStorage
+- [x] **3.11** Ampliar diccionario i18n con traducciones completas (Historia, highlights, filtros, carrusel, footer) preservando nombres propios
+- [x] **3.12** Crear sección Clima en Tiempo Real (#clima) con Open-Meteo API: temperatura actual, sensación térmica, pronóstico 3 días y recomendaciones turísticas dinámicas
 
 ---
 
