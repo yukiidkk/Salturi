@@ -15,7 +15,9 @@ const eventosData = [
         category: "cultura",
         image: "../images/evento-orquesta.jpg",
         location: "Teatro de la Ciudad",
-        featured: false
+        featured: false,
+        description: "Disfruta de una noche mágica con la Orquesta Filarmónica de Coahuila interpretando obras clásicas de Beethoven, Mozart y compositores mexicanos. Un evento imperdible para los amantes de la música clásica en el corazón de Saltillo.",
+        description_en: "Enjoy a magical evening with the Coahuila Philharmonic Orchestra performing classical works by Beethoven, Mozart, and Mexican composers. A must-attend event for classical music lovers in the heart of Saltillo."
     },
     {
         id: 2,
@@ -25,7 +27,9 @@ const eventosData = [
         category: "gastronomia",
         image: "../images/evento-feria.jpg",
         location: "Centro de Convenciones",
-        featured: true
+        featured: true,
+        description: "La feria más grande del norte de México regresa con juegos mecánicos, antojitos regionales, espectáculos musicales en vivo y exposiciones artesanales. Siete días de diversión para toda la familia con la mejor gastronomía coahuilense.",
+        description_en: "The biggest fair in northern Mexico returns with rides, regional street food, live music shows, and artisan exhibitions. Seven days of fun for the whole family with the best Coahuilan gastronomy."
     },
     {
         id: 3,
@@ -35,7 +39,9 @@ const eventosData = [
         category: "cultura",
         image: "../images/evento-artesanos.jpg",
         location: "Plaza Nueva Tlaxcala",
-        featured: false
+        featured: false,
+        description: "Cada domingo se reúnen más de 50 artesanos locales exhibiendo sarapes, cerámica, joyería de plata y productos hechos a mano. Ideal para encontrar souvenirs auténticos y apoyar a la economía local de Saltillo.",
+        description_en: "Every Sunday, over 50 local artisans gather to showcase sarapes, ceramics, silver jewelry, and handmade products. Perfect for finding authentic souvenirs and supporting Saltillo's local economy."
     },
     {
         id: 4,
@@ -45,7 +51,9 @@ const eventosData = [
         category: "naturaleza",
         image: "../images/evento-senderismo.jpg",
         location: "Sierra Zapalinamé",
-        featured: false
+        featured: false,
+        description: "Aventúrate en una caminata guiada por los senderos de la Sierra de Zapalinamé. Recorrido de dificultad media con vistas panorámicas del valle de Saltillo, flora endémica y avistamiento de aves. Incluye guía certificado.",
+        description_en: "Embark on a guided hike through the trails of Sierra de Zapalinamé. A medium-difficulty route with panoramic views of the Saltillo valley, endemic flora, and bird watching. Certified guide included."
     },
     {
         id: 5,
@@ -55,7 +63,9 @@ const eventosData = [
         category: "gastronomia",
         image: "../images/evento-gastronomico.jpg",
         location: "Parque Las Maravillas",
-        featured: true
+        featured: true,
+        description: "Tres días dedicados a la gastronomía norteña: cortes de carne, cabrito, tamales, pan de pulque y más de 30 restaurantes participantes. Incluye clases de cocina, catas de vino y mezcal, y concursos culinarios.",
+        description_en: "Three days dedicated to northern Mexican gastronomy: meat cuts, cabrito, tamales, pan de pulque, and over 30 participating restaurants. Includes cooking classes, wine and mezcal tastings, and culinary contests."
     },
     {
         id: 6,
@@ -65,7 +75,9 @@ const eventosData = [
         category: "cultura",
         image: "../images/evento-museos.jpg",
         location: "Centro Histórico",
-        featured: false
+        featured: false,
+        description: "El último viernes de cada mes, los principales museos del Centro Histórico abren sus puertas de noche con entrada libre. Recorridos guiados, exposiciones temporales, música en vivo y food trucks en las plazas aledañas.",
+        description_en: "On the last Friday of every month, major museums in the Historic Downtown open their doors at night with free admission. Guided tours, temporary exhibitions, live music, and food trucks in nearby plazas."
     }
 ];
 
@@ -127,7 +139,7 @@ function renderCarousel() {
                 <span class="date-tag">${dateText}</span>
                 <h2>${group[1].title}</h2>
                 <p class="card-location">📍 ${group[1].location}</p>
-                <button type="button" class="btn-primary">${btnText}</button>
+                <button type="button" class="btn-primary" onclick="openEventModal(${group[1].id})">${btnText}</button>
             </div>
         </div>`;
     }
@@ -412,6 +424,82 @@ async function fetchWeather() {
             container.innerHTML = `<p class="weather-error"><i class="fa-solid fa-triangle-exclamation"></i> ${msg}</p>`;
         }
     }
+}
+
+// ============================================
+// MODAL DE DETALLE DE EVENTO
+// ============================================
+function openEventModal(eventId) {
+    const evento = eventosData.find(e => e.id === eventId);
+    if (!evento) return;
+
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : 'es';
+    const dateText = lang === 'en' && evento.date_en ? evento.date_en : evento.date;
+    const descText = lang === 'en' && evento.description_en ? evento.description_en : evento.description;
+    const locationLabel = lang === 'en' ? 'Location' : 'Ubicación';
+    const dateLabel = lang === 'en' ? 'Date' : 'Fecha';
+    const categoryLabel = lang === 'en' ? 'Category' : 'Categoría';
+
+    // Crear modal dinámicamente
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'event-modal-overlay';
+    modalOverlay.innerHTML = `
+        <div class="event-modal">
+            <button type="button" class="event-modal-close" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="event-modal-image">
+                <img src="${evento.image}" alt="${evento.title}">
+                <span class="event-modal-category">${evento.category}</span>
+            </div>
+            <div class="event-modal-body">
+                <h2 class="event-modal-title">${evento.title}</h2>
+                <div class="event-modal-meta">
+                    <span><i class="fa-regular fa-calendar"></i> ${dateLabel}: <strong>${dateText}</strong></span>
+                    <span><i class="fa-solid fa-location-dot"></i> ${locationLabel}: <strong>${evento.location}</strong></span>
+                    <span><i class="fa-solid fa-tag"></i> ${categoryLabel}: <strong>${evento.category}</strong></span>
+                </div>
+                <p class="event-modal-desc">${descText}</p>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modalOverlay);
+    document.body.style.overflow = 'hidden'; // Prevenir scroll
+
+    // Animación de entrada
+    requestAnimationFrame(() => {
+        modalOverlay.classList.add('event-modal-visible');
+    });
+
+    // Cerrar con X
+    modalOverlay.querySelector('.event-modal-close').addEventListener('click', () => {
+        closeEventModal(modalOverlay);
+    });
+
+    // Cerrar al clic fuera del modal
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            closeEventModal(modalOverlay);
+        }
+    });
+
+    // Cerrar con Escape
+    const escHandler = (e) => {
+        if (e.key === 'Escape') {
+            closeEventModal(modalOverlay);
+            document.removeEventListener('keydown', escHandler);
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
+
+function closeEventModal(modalOverlay) {
+    modalOverlay.classList.remove('event-modal-visible');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+        modalOverlay.remove();
+    }, 300);
 }
 
 // ============================================
