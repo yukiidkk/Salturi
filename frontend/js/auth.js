@@ -74,15 +74,22 @@ async function registerWithEmail(email, password, fullName) {
 }
 
 async function loginWithGoogle() {
-    if (!supabaseClient) return { error: 'Supabase no inicializado' };
+    if (!supabaseClient) {
+        console.error('loginWithGoogle: Supabase no inicializado');
+        return { error: 'Supabase no inicializado' };
+    }
     try {
         const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider: 'google',
-            options: { redirectTo: window.location.origin + '/frontend/html/index.html' }
+            options: { redirectTo: 'http://127.0.0.1:5500/frontend/html/index.html' }
         });
-        if (error) return { error: error.message };
+        if (error) {
+            console.error('loginWithGoogle error:', error.message);
+            return { error: error.message };
+        }
         return { data };
     } catch (e) {
+        console.error('loginWithGoogle exception:', e);
         return { error: e.message };
     }
 }
@@ -500,8 +507,39 @@ function initFavoritesPanel() {
 document.addEventListener('DOMContentLoaded', () => {
     initSupabase();
     checkSession();
+    initAuthStateListener();
     initLoginForm();
     initRegisterForm();
+    initGoogleButtons();
     initPasswordToggle();
     initFavoritesPanel();
 });
+
+// ============================================
+// LISTENER DE CAMBIO DE ESTADO DE AUTH
+// ============================================
+function initAuthStateListener() {
+    if (!supabaseClient) return;
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_IN' && session && session.user) {
+            currentUser = session.user;
+            renderUserNavbar();
+        } else if (event === 'SIGNED_OUT') {
+            currentUser = null;
+            renderLogoutNavbar();
+        }
+    });
+}
+
+// ============================================
+// VINCULAR BOTONES DE GOOGLE
+// ============================================
+function initGoogleButtons() {
+    const googleBtn = document.getElementById('btn-google-login');
+    if (googleBtn) {
+        googleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginWithGoogle();
+        });
+    }
+}
