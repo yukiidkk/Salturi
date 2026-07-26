@@ -81,12 +81,12 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 
 ## Fase 6 — Moderación por IA (Gemini API)
 
-- [ ] **6.1** Instalar Google Generative AI SDK: `pip install google-generativeai`
-- [ ] **6.2** Crear `services/gemini_service.py` con función `moderate_content(type, content) → {approved, reason}`
-- [ ] **6.3** Implementar endpoint `POST /api/v1/moderate` en Flask
+- [x] **6.1** Instalar Google Generative AI SDK (+ implementación con requests REST directo por incompatibilidad SSL/gRPC en Windows)
+- [x] **6.2** Crear `services/gemini_service.py` con función `moderate_content(type, content) → {approved, reason}`
+- [x] **6.3** Implementar endpoint `POST /api/v1/moderate` en Flask (blueprint registrado en app.py)
 - [ ] **6.4** Integrar moderación en el flujo de comentarios: llamar antes de guardar en Supabase
-- [ ] **6.5** Integrar moderación en el flujo de envío de eventos por Organizer
-- [ ] **6.6** Mostrar mensaje de error claro al usuario si su contenido es rechazado
+- [x] **6.5** Integrar moderación en el flujo de envío de eventos por Organizer (`create-event.js`)
+- [x] **6.6** Mostrar mensaje de error claro al usuario si su contenido es rechazado
 
 ---
 
