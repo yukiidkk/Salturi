@@ -106,7 +106,7 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 - [ ] **8.2** Optimizar imágenes con Cloudinary (transformaciones webp, resize)
 - [x] **8.3** Configurar variables de entorno en `.env` (nunca subir al repo)
 - [x] **8.4** Agregar `.gitignore` que excluya `.env`, `__pycache__`, `node_modules`
-- [ ] **8.5** Escribir `README.md` con instrucciones de setup local
+- [x] **8.5** Escribir `README.md` con instrucciones de setup local
 - [ ] **8.6** Desplegar frontend en Vercel o Netlify
 - [ ] **8.7** Desplegar backend Flask en Railway o Render
 - [ ] **8.8** Configurar variables de entorno en producción
