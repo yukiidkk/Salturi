@@ -7,9 +7,9 @@
 // ============================================
 // CONFIGURACIÓN
 // ============================================
-const SUPABASE_URL = 'https://chiuumbnfnpidhqkqbnl.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_RhMSfdU_Q7BeykB-3XMiVQ_zTYsz5o1';
-const MODERATION_API = 'http://localhost:5000/api/v1/moderate';
+const SUPABASE_URL = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.SUPABASE_URL : 'https://chiuumbnfnpidhqkqbnl.supabase.co';
+const SUPABASE_ANON_KEY = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.SUPABASE_ANON_KEY : 'sb_publishable_RhMSfdU_Q7BeykB-3XMiVQ_zTYsz5o1';
+const MODERATION_API = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.API_BASE + '/moderate' : 'http://localhost:5000/api/v1/moderate';
 
 let sbClient = null;
 let user = null;

@@ -4,9 +4,9 @@
  * Valida rol admin, carga eventos pendientes, acciones de moderación.
  */
 
-const SUPABASE_URL = 'https://chiuumbnfnpidhqkqbnl.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_RhMSfdU_Q7BeykB-3XMiVQ_zTYsz5o1';
-const API_BASE = 'http://localhost:5000/api/v1';
+const SUPABASE_URL = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.SUPABASE_URL : 'https://chiuumbnfnpidhqkqbnl.supabase.co';
+const SUPABASE_ANON_KEY = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.SUPABASE_ANON_KEY : 'sb_publishable_RhMSfdU_Q7BeykB-3XMiVQ_zTYsz5o1';
+const API_BASE = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.API_BASE : 'http://localhost:5000/api/v1';
 
 let sbClient = null;
 let adminUser = null;

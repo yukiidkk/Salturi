@@ -107,9 +107,9 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 - [x] **8.3** Configurar variables de entorno en `.env` (nunca subir al repo)
 - [x] **8.4** Agregar `.gitignore` que excluya `.env`, `__pycache__`, `node_modules`
 - [x] **8.5** Escribir `README.md` con instrucciones de setup local
-- [ ] **8.6** Desplegar frontend en Vercel o Netlify
-- [ ] **8.7** Desplegar backend Flask en Railway o Render
-- [ ] **8.8** Configurar variables de entorno en producción
+- [x] **8.6** Desplegar frontend en Vercel o Netlify
+- [x] **8.7** Desplegar backend Flask en Railway o Render
+- [x] **8.8** Configurar variables de entorno en producción
 
 ---
 

@@ -6,8 +6,9 @@
 // ============================================
 // CONFIGURACIÓN SUPABASE
 // ============================================
-const SUPABASE_URL = 'https://chiuumbnfnpidhqkqbnl.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_RhMSfdU_Q7BeykB-3XMiVQ_zTYsz5o1';
+const SUPABASE_URL = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.SUPABASE_URL : 'https://chiuumbnfnpidhqkqbnl.supabase.co';
+const SUPABASE_ANON_KEY = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.SUPABASE_ANON_KEY : 'sb_publishable_RhMSfdU_Q7BeykB-3XMiVQ_zTYsz5o1';
+const MODERATION_API_URL = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.API_BASE + '/moderate' : 'http://localhost:5000/api/v1/moderate';
 
 let supabaseClient;
 let currentUser = null;
@@ -81,7 +82,7 @@ async function loginWithGoogle() {
     try {
         const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider: 'google',
-            options: { redirectTo: 'http://127.0.0.1:5500/frontend/html/index.html' }
+            options: { redirectTo: (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.AUTH_REDIRECT : 'http://127.0.0.1:5500/frontend/html/index.html' }
         });
         if (error) {
             console.error('loginWithGoogle error:', error.message);
