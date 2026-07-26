@@ -92,11 +92,11 @@ Orden sugerido de desarrollo. Cada tarea es independiente dentro de su fase, per
 
 ## Fase 7 — Dashboard del Administrador
 
-- [ ] **7.1** Crear ruta protegida `/admin` en el frontend (redirige si el rol no es `admin`)
-- [ ] **7.2** Diseñar y construir `admin.html` con tabla de eventos pendientes
-- [ ] **7.3** Implementar botones "Aprobar" / "Rechazar" que llamen a `PATCH /api/v1/admin/events/:id/status`
-- [ ] **7.4** Mostrar contador de items moderados por IA (últimas 24h / semana)
-- [ ] **7.5** Añadir sección de usuarios reportados con opción de bloqueo
+- [x] **7.1** Crear ruta protegida `/admin` en el frontend (redirige si el rol no es `admin`)
+- [x] **7.2** Diseñar y construir `admin.html` con tabla de eventos pendientes
+- [x] **7.3** Implementar botones "Aprobar" / "Rechazar" que llamen a `PATCH /api/v1/admin/events/:id/status`
+- [x] **7.4** Mostrar contador de items moderados por IA (últimas 24h / semana)
+- [x] **7.5** Añadir sección de usuarios reportados con opción de bloqueo
 
 ---
 

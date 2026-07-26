@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalTurismo - Panel de Administración</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1>SalTurismo</h1>
+                <span class="slogan">Panel Admin</span>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Volver al Sitio</a>
+        </nav>
+        <button type="button" class="btn-login btn-user-logged" id="admin-user-btn">Admin</button>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="admin-dashboard">
+        <!-- Métricas -->
+        <div class="admin-metrics">
+            <div class="metric-card">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <div class="metric-info">
+                    <span class="metric-value" id="metric-pending">0</span>
+                    <span class="metric-label">Eventos Pendientes</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <i class="fa-solid fa-circle-check"></i>
+                <div class="metric-info">
+                    <span class="metric-value" id="metric-approved">0</span>
+                    <span class="metric-label">Eventos Aprobados</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <i class="fa-solid fa-robot"></i>
+                <div class="metric-info">
+                    <span class="metric-value" id="metric-moderated-24h">—</span>
+                    <span class="metric-label">Moderados (24h)</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <div class="metric-info">
+                    <span class="metric-value" id="metric-moderated-week">—</span>
+                    <span class="metric-label">Moderados (semana)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Eventos Pendientes -->
+        <div class="admin-section">
+            <h2><i class="fa-solid fa-calendar-check"></i> Eventos Pendientes de Aprobación</h2>
+            <div class="admin-table-container">
+                <table class="admin-table" id="pending-events-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoría</th>
+                            <th>Fecha</th>
+                            <th>Ubicación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pending-events-body">
+                        <tr><td colspan="5" class="table-empty">Cargando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Usuarios Reportados -->
+        <div class="admin-section">
+            <h2><i class="fa-solid fa-user-shield"></i> Usuarios Reportados</h2>
+            <div class="admin-table-container">
+                <table class="admin-table" id="reported-users-table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Nombre</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reported-users-body">
+                        <tr><td colspan="4" class="table-empty">Sin usuarios reportados</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Script Admin -->
+    <script src="../js/admin.js"></script>
+</body>
+</html>
