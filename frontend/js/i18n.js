@@ -18,6 +18,9 @@ const translations = {
         cat_culture: "Cultura",
         cat_gastro: "Gastronomía",
         cat_nature: "Naturaleza",
+        cat_music: "Música",
+        cat_sports: "Deportes",
+        cat_history: "Historia",
 
         // Mapa
         map_title: "Explora el Mapa",
@@ -84,6 +87,9 @@ const translations = {
         cat_culture: "Culture",
         cat_gastro: "Gastronomy",
         cat_nature: "Nature",
+        cat_music: "Music",
+        cat_sports: "Sports",
+        cat_history: "History",
 
         // Mapa
         map_title: "Explore the Map",

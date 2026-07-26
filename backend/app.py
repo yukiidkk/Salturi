@@ -23,6 +23,7 @@ from routes.events import events_bp
 from routes.places import places_bp
 from routes.reviews import reviews_bp
 from routes.admin import admin_bp
+from routes.moderate import moderate_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -34,6 +35,7 @@ app.register_blueprint(events_bp)
 app.register_blueprint(places_bp)
 app.register_blueprint(reviews_bp)
 app.register_blueprint(admin_bp)
+app.register_blueprint(moderate_bp)
 
 
 # ============================================

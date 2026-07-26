@@ -86,6 +86,7 @@ const eventosData = [
 // ============================================
 let currentIndex = 0;
 let filteredEvents = [...eventosData];
+let allEvents = [...eventosData]; // Global: todos los eventos (Supabase + mock)
 
 function getVisibleGroup() {
     const total = filteredEvents.length;
@@ -203,9 +204,9 @@ function initCarouselArrows() {
 function filterByCategory(category) {
     currentIndex = 0;
     if (category === 'todos') {
-        filteredEvents = [...eventosData];
+        filteredEvents = [...allEvents];
     } else {
-        filteredEvents = eventosData.filter(e => e.category === category);
+        filteredEvents = allEvents.filter(e => e.category === category);
     }
     renderCarousel();
     updateActiveFilter(category);
@@ -503,13 +504,71 @@ function closeEventModal(modalOverlay) {
 }
 
 // ============================================
-// INICIALIZACIÓN
+// CREAR EVENTO (init modal si existe en la página)
+// ============================================
+function initCreateEventModal() {
+    try {
+        const btnFab = document.getElementById('btn-create-event');
+        if (btnFab) btnFab.addEventListener('click', () => {
+            window.location.href = 'create-event.html';
+        });
+    } catch(e) { /* silencioso */ }
+}
+
+// ============================================
+// CARGA DINÁMICA DE EVENTOS DESDE SUPABASE
+// ============================================
+async function loadEventsFromSupabase() {
+    try {
+        // Esperar a que auth.js inicialice supabaseClient
+        await new Promise(r => setTimeout(r, 500));
+
+        if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+            const today = new Date().toISOString().split('T')[0];
+
+            const { data, error } = await supabaseClient
+                .from('events')
+                .select('*')
+                .eq('status', 'approved')
+                .gte('event_date', today)
+                .order('event_date', { ascending: true });
+
+            if (!error && data && data.length > 0) {
+                const sbEvents = data.map((ev, idx) => ({
+                    id: ev.id || idx + 100,
+                    title: ev.title || 'Sin título',
+                    date: ev.event_date || '',
+                    date_en: ev.event_date || '',
+                    category: ev.category || 'cultura',
+                    image: ev.image_url || '../images/evento-feria.jpg',
+                    location: ev.location || 'Saltillo',
+                    featured: idx === 0,
+                    description: ev.description || '',
+                    description_en: ev.description || ''
+                }));
+                // Supabase events primero, mock como fallback
+                allEvents = [...sbEvents, ...eventosData];
+                filteredEvents = [...allEvents];
+                currentIndex = 0;
+                renderCarousel();
+            }
+        }
+    } catch (err) {
+        console.warn('loadEventsFromSupabase:', err);
+    }
+}
+
+// ============================================
+// INICIALIZACIÓN SEGURA
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    renderCarousel();
-    initCarouselArrows();
-    initFilters();
-    initNavigation();
-    initKeyboardNav();
-    fetchWeather();
+    try { renderCarousel(); } catch(e) { console.warn(e); }
+    try { initCarouselArrows(); } catch(e) { console.warn(e); }
+    try { initFilters(); } catch(e) { console.warn(e); }
+    try { initNavigation(); } catch(e) { console.warn(e); }
+    try { initKeyboardNav(); } catch(e) { console.warn(e); }
+    try { fetchWeather(); } catch(e) { console.warn(e); }
+    try { initCreateEventModal(); } catch(e) { console.warn(e); }
+    // Cargar eventos desde Supabase (async, no bloquea)
+    loadEventsFromSupabase();
 });

@@ -124,8 +124,10 @@ function renderUserNavbar() {
     // Crear menú si no existe
     createUserMenu(newBtn);
 
-    // Mostrar botón de favoritos
+    // Mostrar botón de favoritos y FAB
     showFavoritesButton();
+    const fab = document.getElementById('btn-create-event');
+    if (fab) fab.classList.add('auth-visible');
 }
 
 function createUserMenu(anchorBtn) {
@@ -139,6 +141,9 @@ function createUserMenu(anchorBtn) {
         <div class="user-menu-header">
             <span class="user-menu-email">${currentUser.email || ''}</span>
         </div>
+        <a href="create-event.html" class="user-menu-item" data-action="create-event">
+            <i class="fa-solid fa-calendar-plus"></i> Solicitar Evento
+        </a>
         <a href="#" class="user-menu-item" data-action="favorites">
             <i class="fa-solid fa-heart"></i> Mis Favoritos
         </a>
@@ -166,6 +171,8 @@ function createUserMenu(anchorBtn) {
             window.location.href = 'index.html';
         } else if (action === 'favorites') {
             openFavoritesPanel();
+        } else if (action === 'create-event') {
+            window.location.href = 'create-event.html';
         }
     });
 
@@ -194,8 +201,10 @@ function renderLogoutNavbar() {
     newBtn.setAttribute('onclick', "window.location.href='login.html'");
     btnLogged.parentNode.replaceChild(newBtn, btnLogged);
 
-    // Ocultar botón de favoritos
+    // Ocultar botón de favoritos y FAB
     hideFavoritesButton();
+    const fab = document.getElementById('btn-create-event');
+    if (fab) fab.classList.remove('auth-visible');
 }
 
 function toggleUserMenu() {

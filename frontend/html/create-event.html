@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalTurismo - Solicitar Evento</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1>SalTurismo</h1>
+                <span class="slogan">¡A dónde vamos!?</span>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Eventos</a>
+            <a href="index.html#turismo">Turismo</a>
+            <a href="index.html#historia">Historia</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+        <button type="button" class="btn-login" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+    </header>
+
+    <!-- Formulario Crear Evento -->
+    <section class="create-event-page">
+        <div class="create-event-card">
+            <h2><i class="fa-solid fa-calendar-plus"></i> Solicitar Evento</h2>
+            <p class="create-event-subtitle">Completa el formulario para publicar un evento en SalTurismo. Tu solicitud será revisada por nuestra IA de moderación.</p>
+
+            <form id="create-event-form" class="create-event-form">
+                <div class="form-group">
+                    <label for="event-title"><i class="fa-solid fa-heading"></i> Título del Evento *</label>
+                    <input type="text" id="event-title" placeholder="Ej: Festival de Jazz en Saltillo" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="event-category"><i class="fa-solid fa-tag"></i> Categoría *</label>
+                        <select id="event-category" required>
+                            <option value="">Selecciona...</option>
+                            <option value="cultura">Cultura</option>
+                            <option value="gastronomia">Gastronomía</option>
+                            <option value="naturaleza">Naturaleza</option>
+                            <option value="musica">Música</option>
+                            <option value="deportes">Deportes</option>
+                            <option value="historia">Historia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date"><i class="fa-regular fa-calendar"></i> Fecha del Evento</label>
+                        <input type="date" id="event-date">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-description"><i class="fa-solid fa-align-left"></i> Descripción *</label>
+                    <textarea id="event-description" rows="5" placeholder="Describe el evento con detalle: qué actividades habrá, horario, costo, etc." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-location"><i class="fa-solid fa-location-dot"></i> Ubicación *</label>
+                    <input type="text" id="event-location" placeholder="Ej: Teatro de la Ciudad, Centro Histórico" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-image"><i class="fa-solid fa-image"></i> URL de Imagen (opcional)</label>
+                    <input type="url" id="event-image" placeholder="https://ejemplo.com/imagen-evento.jpg">
+                </div>
+
+                <div id="event-form-message" class="form-message"></div>
+
+                <button type="submit" class="btn-primary btn-submit-event">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Script independiente para crear evento -->
+    <script src="../js/create-event.js"></script>
+</body>
+</html>
