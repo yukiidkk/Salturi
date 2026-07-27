@@ -361,7 +361,9 @@ function initLoginForm() {
     submitBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         const email = form.querySelector('input[type="email"]')?.value;
-        const password = form.querySelector('input[type="password"]')?.value;
+        // Lee contraseña del input independientemente de si está en modo text (ojo activo)
+        const passwordInput = form.querySelector('input[placeholder="Contraseña"]') || form.querySelector('input[type="password"]');
+        const password = passwordInput?.value;
 
         if (!email || !password) {
             showAuthMessage('Por favor, completa todos los campos.', 'error');
@@ -417,8 +419,8 @@ function initRegisterForm() {
             showAuthMessage('Las contraseñas no coinciden.', 'error');
             return;
         }
-        if (password.length < 6) {
-            showAuthMessage('La contraseña debe tener al menos 6 caracteres.', 'error');
+        if (password.length < 8 || !/[A-Z]/.test(password)) {
+            showAuthMessage('La contraseña debe tener al menos 8 caracteres y una letra mayúscula.', 'error');
             return;
         }
 
@@ -465,8 +467,14 @@ function showAuthMessage(message, type) {
 
 function initPasswordToggle() {
     document.querySelectorAll('.toggle-password').forEach(toggle => {
-        toggle.addEventListener('click', () => {
-            const input = toggle.parentElement.querySelector('input');
+        const btn = toggle.closest('.toggle-password-btn') || toggle;
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // Find the input in the same input-group
+            const group = toggle.closest('.input-group');
+            const input = group ? group.querySelector('input') : toggle.parentElement.querySelector('input');
+            if (!input) return;
             if (input.type === 'password') {
                 input.type = 'text';
                 toggle.classList.replace('fa-eye-slash', 'fa-eye');

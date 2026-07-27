@@ -43,6 +43,22 @@ body {
     font-weight: 800;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo-img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
 .logo .slogan {
     font-size: 0.7rem;
     opacity: 0.8;
@@ -1329,9 +1345,18 @@ body {
     font-size: 1rem;
 }
 
-.toggle-password {
+.toggle-password-btn {
     position: absolute;
-    right: 0.9rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    padding: 0.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
     color: var(--navy-blue);
     font-size: 0.9rem;
     cursor: pointer;
@@ -1548,6 +1573,23 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
+}
+
+.footer-brand-centered {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.footer-brand-centered h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand-centered p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    line-height: 1.5;
 }
 
 .footer-brand p {

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explora Saltillo</title>
+    <title>SalTurismo</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="stylesheet" href="../css/style.css">
     <!-- Iconos de FontAwesome para las flechas de navegación -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,9 +16,12 @@
     <!-- Encabezado / Navegación -->
     <header class="navbar">
         <div class="logo">
-            <a href="index.html" style="text-decoration: none; color: inherit;">
-                <h1>SalTurismo</h1>
-                <span class="slogan">¡A dónde vamos!?</span>
+            <a href="index.html" class="logo-link">
+                <img src="../images/logo.png" alt="SalTurismo" class="logo-img">
+                <div>
+                    <h1>SalTurismo</h1>
+                    <span class="slogan">¡A dónde vamos!?</span>
+                </div>
             </a>
         </div>
         <nav class="nav-links">
@@ -238,7 +242,7 @@
         </div>
     </section>
 
-    <!-- Footer / Contacto -->
+    <!-- Footer -->
     <footer id="contacto" class="footer-section">
         <!-- Tarjeta de Emergencias -->
         <div class="emergency-card">
@@ -263,36 +267,12 @@
             </div>
         </div>
 
-        <div class="footer-container">
-            <div class="footer-brand">
-                <h2>SalTurismo</h2>
-                <p data-i18n="footer_desc">Tu plataforma para descubrir eventos, turismo y la cultura de Saltillo, Coahuila.</p>
-            </div>
-            <div class="footer-links">
-                <h4 data-i18n="footer_nav">Navegación</h4>
-                <a href="#eventos" data-i18n="nav_eventos">Eventos</a>
-                <a href="#turismo" data-i18n="nav_turismo">Turismo</a>
-                <a href="#historia" data-i18n="nav_historia">Historia</a>
-                <a href="login.html" data-i18n="login">Iniciar Sesión</a>
-            </div>
-            <div class="footer-contact">
-                <h4 data-i18n="footer_contact">Contacto</h4>
-                <p><i class="fa-solid fa-envelope"></i> contacto@salturi.mx</p>
-                <p><i class="fa-solid fa-phone"></i> +52 844 123 4567</p>
-                <p><i class="fa-solid fa-location-dot"></i> Saltillo, Coahuila, México</p>
-            </div>
-            <div class="footer-social">
-                <h4 data-i18n="footer_follow">Síguenos</h4>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
+        <div class="footer-brand-centered">
+            <h2>SalTurismo</h2>
+            <p data-i18n="footer_desc">Tu plataforma para descubrir eventos, turismo y la cultura de Saltillo, Coahuila.</p>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 SALTURI. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+            <p>&copy; 2025 SalTurismo. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
         </div>
     </footer>
 

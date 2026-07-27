@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explora Saltillo - Registrarse</title>
+    <title>SalTurismo - Registrarse</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="stylesheet" href="../css/style.css">
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,9 +14,12 @@
     <!-- Encabezado / Navegación -->
     <header class="navbar">
         <div class="logo">
-            <a href="index.html" style="text-decoration: none; color: inherit;">
-                <h1>SalTurismo</h1>
-                <span class="slogan">¡A dónde vamos!?</span>
+            <a href="index.html" class="logo-link">
+                <img src="../images/logo.png" alt="SalTurismo" class="logo-img">
+                <div>
+                    <h1>SalTurismo</h1>
+                    <span class="slogan">¡A dónde vamos!?</span>
+                </div>
             </a>
         </div>
         <nav class="nav-links">
@@ -56,13 +60,13 @@
                     <div class="input-group">
                         <i class="fa-solid fa-lock input-icon"></i>
                         <input type="password" placeholder="Contraseña" required>
-                        <i class="fa-regular fa-eye-slash toggle-password"></i>
+                        <button type="button" class="toggle-password-btn"><i class="fa-regular fa-eye-slash toggle-password"></i></button>
                     </div>
 
                     <div class="input-group">
                         <i class="fa-solid fa-lock input-icon"></i>
                         <input type="password" placeholder="Confirmar Contraseña" required>
-                        <i class="fa-regular fa-eye-slash toggle-password"></i>
+                        <button type="button" class="toggle-password-btn"><i class="fa-regular fa-eye-slash toggle-password"></i></button>
                     </div>
 
                     <button type="button" class="btn-primary btn-submit">Registrarse</button>

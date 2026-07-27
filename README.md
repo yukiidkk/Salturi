@@ -1,55 +1,159 @@
-# 🌮 SalTurismo — Plataforma de Turismo y Eventos de Saltillo
+<p align="center">
+  <img src="frontend/images/logo.png" alt="SalTurismo Logo" width="120" style="border-radius:50%"/>
+</p>
 
-> **¡A dónde vamos!?** — Descubre eventos, explora el mapa interactivo y vive la cultura de Saltillo, Coahuila.
+<h1 align="center">🌮 SalTurismo</h1>
+
+<p align="center">
+  <strong>¡A dónde vamos!?</strong> — Plataforma de turismo y eventos culturales de Saltillo, Coahuila.
+</p>
+
+<p align="center">
+  <a href="https://salturi.vercel.app/html/index.html"><img src="https://img.shields.io/badge/🚀_Demo_en_vivo-Vercel-000?style=for-the-badge&logo=vercel" alt="Demo"></a>
+  <img src="https://img.shields.io/badge/Estado-Producción-brightgreen?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Licencia-MIT-blue?style=for-the-badge" alt="License">
+</p>
+
+---
+
+## 🔗 Demo en Producción
+
+**👉 [https://salturi.vercel.app/html/index.html](https://salturi.vercel.app/html/index.html)**
 
 ---
 
 ## 📋 Descripción
 
-**SalTurismo** es una plataforma web que unifica un feed de eventos culturales/sociales y un mapa interactivo de lugares de interés (restaurantes, cafeterías, museos, parques) de la ciudad de Saltillo, México. Incluye moderación de contenido impulsada por IA (Google Gemini) y un sistema de autenticación con roles.
+**SalTurismo** es una plataforma web completa que conecta a turistas y locales con la oferta cultural, gastronómica y recreativa de Saltillo, México. Integra un mapa interactivo con +30 puntos de interés, un sistema de eventos moderados por IA, autenticación segura con Google OAuth, clima en tiempo real y un panel de administración.
 
 ---
 
-## ✨ Funcionalidades Principales
+## 🏗️ Arquitectura en la Nube
 
-| Módulo | Descripción |
-|--------|-------------|
-| 🎪 **Carrusel de Eventos** | Feed dinámico de eventos aprobados con filtros por categoría |
-| 🗺️ **Mapa Interactivo** | 33 puntos de interés con Leaflet.js, filtros por categoría y geolocalización |
-| 🌤️ **Clima en Tiempo Real** | Temperatura actual + pronóstico 3 días (API Open-Meteo) |
-| 🔐 **Autenticación** | Login con Email/Password y Google OAuth vía Supabase Auth |
-| 🤖 **Moderación IA** | Revisión automática de contenido con Google Gemini antes de publicar |
-| ⭐ **Favoritos** | Panel lateral para guardar lugares (localStorage + Supabase) |
-| 📅 **Publicar Eventos** | Formulario con moderación IA integrada |
-| 🛡️ **Dashboard Admin** | Panel para aprobar/rechazar eventos y gestionar usuarios |
-| 🌐 **Bilingüe** | Interfaz ES/EN con cambio dinámico sin recargar |
-| 🚨 **Emergencias** | Puntos de emergencia en el mapa + contactos directos |
+```
+┌─────────────────┐      ┌──────────────────┐      ┌─────────────────┐
+│   Frontend      │      │    Backend API   │      │   Base de Datos │
+│   (Vercel)      │◄────►│    (Render)      │◄────►│   (Supabase)    │
+│   HTML/CSS/JS   │      │   Python/Flask   │      │   PostgreSQL    │
+└─────────────────┘      └──────────────────┘      └─────────────────┘
+                                  │
+                          ┌───────┴───────┐
+                          │               │
+                   ┌──────▼──────┐ ┌──────▼──────┐
+                   │  Gemini AI  │ │ Cloudinary  │
+                   │ Moderación  │ │  Imágenes   │
+                   └─────────────┘ └─────────────┘
+```
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Stack Tecnológico
 
-### Frontend
-- HTML5 + CSS3 (custom, sin frameworks)
-- JavaScript ES6+ (vanilla)
-- Leaflet.js (mapa interactivo)
-- Supabase JS SDK (auth + base de datos)
-- FontAwesome 6 (íconos)
+| Capa | Tecnología | Despliegue |
+|------|-----------|------------|
+| **Frontend** | HTML5, CSS3, JavaScript ES6+ | [Vercel](https://vercel.com) |
+| **Backend** | Python 3.12, Flask, Gunicorn | [Render](https://render.com) |
+| **Base de Datos** | PostgreSQL (Supabase) | Supabase Cloud |
+| **Autenticación** | Supabase Auth (Email + Google OAuth) | Supabase Cloud |
+| **Moderación IA** | Google Gemini 1.5 Flash (API REST) | Google AI |
+| **Multimedia** | Cloudinary (webp auto, resize, quality auto) | Cloudinary Cloud |
+| **Mapas** | Leaflet.js + OpenStreetMap | CDN |
+| **Clima** | Open-Meteo API (sin key) | Open-Meteo |
 
-### Backend
-- Python 3.12 + Flask
-- Flask-CORS
-- Google Gemini API (moderación vía REST)
-- Supabase SDK para Python
+---
 
-### Base de Datos & Auth
-- Supabase (PostgreSQL + Auth + RLS)
-- Tablas: `profiles`, `events`, `places`, `reviews`, `favorites`
+## ✨ Funcionalidades Clave
 
-### APIs Externas
-- Open-Meteo (clima, sin API key)
-- Google Gemini 1.5 Flash (moderación de contenido)
-- OpenStreetMap tiles (mapa)
+### 🔐 Autenticación Segura
+- Registro con validación de contraseña fuerte (8+ caracteres, mayúscula obligatoria)
+- Inicio de sesión con Email/Password
+- Inicio de sesión con Google OAuth (un clic)
+- Sesión persistente con token JWT
+
+### 🎪 Eventos Culturales Dinámicos
+- Publicación de eventos con formulario completo
+- Moderación automática con IA (Gemini) antes de publicar
+- Carrusel interactivo con filtros por categoría (Cultura, Gastronomía, Naturaleza, Música, Deportes, Historia)
+- Modal de detalle con descripción, fecha, ubicación y categoría
+- Filtrado automático de eventos pasados
+
+### 🗺️ Mapa Interactivo
+- +33 puntos de interés distribuidos Norte/Centro/Sur de Saltillo
+- Marcadores con íconos por categoría y colores distintivos
+- Filtros interactivos con zoom dinámico
+- Puntos de emergencia (hospitales, Cruz Roja, bomberos)
+- Geolocalización en tiempo real del usuario
+- Popups con descripción y enlace a Google Maps
+
+### 🌤️ Clima en Tiempo Real
+- Temperatura actual con ícono y descripción
+- Sensación térmica y velocidad del viento
+- Pronóstico de 3 días
+- Recomendaciones turísticas dinámicas según el clima
+
+### 🖼️ Gestión de Imágenes (Cloudinary)
+- Subida automática al crear eventos
+- Transformaciones on-the-fly: formato WebP, resize 1000px, calidad automática
+- Fallback graceful si Cloudinary no está configurado
+
+### 🛡️ Panel de Administración
+- Acceso protegido por rol (solo admins)
+- Tabla de eventos pendientes con aprobación/rechazo en 1 clic
+- Métricas: eventos moderados (24h/semana), aprobados, pendientes
+- Gestión de usuarios con opción de bloqueo
+
+### 🌐 Bilingüe (ES/EN)
+- Cambio dinámico sin recargar página
+- Preferencia guardada en localStorage
+- Nombres propios de lugares nunca se traducen
+
+### ⭐ Favoritos
+- Panel lateral con tarjetas de lugares guardados
+- Clic para centrar mapa en la ubicación
+- Persistencia en localStorage + Supabase (si hay sesión)
+
+---
+
+## 🚀 Ejecución Local
+
+### Prerrequisitos
+- Python 3.10+
+- Navegador moderno
+- Cuenta en [Supabase](https://supabase.com)
+- API Key de [Google AI Studio](https://aistudio.google.com/apikey) (opcional)
+- Cuenta en [Cloudinary](https://cloudinary.com) (opcional)
+
+### 1. Clonar y configurar backend
+```bash
+git clone https://github.com/yukiidkk/Salturi.git
+cd Salturi/backend
+python -m venv venv
+venv\Scripts\activate          # Windows
+pip install -r requirements.txt
+```
+
+### 2. Variables de entorno (`backend/.env`)
+```env
+SUPABASE_URL=https://tu-proyecto.supabase.co
+SUPABASE_KEY=tu_anon_key
+FLASK_ENV=development
+GEMINI_API_KEY=tu_gemini_key
+CLOUDINARY_CLOUD_NAME=tu_cloud
+CLOUDINARY_API_KEY=tu_key
+CLOUDINARY_API_SECRET=tu_secret
+```
+
+### 3. Iniciar backend
+```bash
+python app.py
+# → http://localhost:5000/api/v1/health
+```
+
+### 4. Iniciar frontend
+```bash
+# Usar Live Server (VS Code) apuntando a frontend/html/index.html
+# → http://127.0.0.1:5500/frontend/html/index.html
+```
 
 ---
 
@@ -58,199 +162,44 @@
 ```
 SalTurismo/
 ├── frontend/
-│   ├── html/
-│   │   ├── index.html          # Página principal (landing)
-│   │   ├── login.html          # Inicio de sesión
-│   │   ├── register.html       # Registro
-│   │   ├── create-event.html   # Formulario de nuevo evento
-│   │   └── admin.html          # Dashboard del administrador
-│   ├── css/
-│   │   └── style.css           # Estilos globales
-│   ├── js/
-│   │   ├── main.js             # Carrusel, clima, navegación
-│   │   ├── map.js              # Mapa Leaflet + marcadores
-│   │   ├── auth.js             # Autenticación Supabase
-│   │   ├── i18n.js             # Sistema de traducción ES/EN
-│   │   ├── create-event.js     # Lógica de crear evento
-│   │   └── admin.js            # Lógica del dashboard admin
-│   └── images/                 # Assets de imágenes
+│   ├── html/          # Vistas (index, login, register, create-event, admin)
+│   ├── css/           # Estilos globales
+│   ├── js/            # Scripts modulares (main, map, auth, i18n, config, admin, create-event)
+│   └── images/        # Assets estáticos
 ├── backend/
-│   ├── app.py                  # Punto de entrada Flask
-│   ├── config.py               # Variables de entorno
-│   ├── requirements.txt        # Dependencias Python
-│   ├── routes/
-│   │   ├── events.py           # CRUD de eventos
-│   │   ├── places.py           # Lugares turísticos
-│   │   ├── reviews.py          # Reseñas
-│   │   ├── admin.py            # Administración
-│   │   └── moderate.py         # Moderación con Gemini
-│   ├── services/
-│   │   ├── supabase_service.py # Cliente Supabase
-│   │   └── gemini_service.py   # Servicio de moderación IA
-│   └── migrations/
-│       └── 002_create_profiles_and_favorites.sql
-├── .gitignore
+│   ├── app.py         # Punto de entrada Flask
+│   ├── config.py      # Variables de entorno
+│   ├── Procfile       # Despliegue Render
+│   ├── routes/        # Endpoints API (events, places, reviews, admin, moderate)
+│   ├── services/      # Supabase, Gemini, Cloudinary
+│   └── migrations/    # SQL para Supabase
 ├── README.md
-├── steering.md                 # Documento de diseño del proyecto
-├── design.md                   # Arquitectura técnica
-└── tasks.md                    # Plan de implementación por fases
+└── .gitignore
 ```
 
 ---
 
-## 🚀 Setup Local
-
-### Prerrequisitos
-- Python 3.10+
-- Navegador moderno (Chrome, Firefox, Edge)
-- Cuenta en [Supabase](https://supabase.com)
-- API Key de [Google AI Studio](https://aistudio.google.com/apikey)
-
-### 1. Clonar el repositorio
-```bash
-git clone https://github.com/tu-usuario/SalTurismo.git
-cd SalTurismo
-```
-
-### 2. Configurar el Backend
-```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # macOS/Linux
-
-pip install -r requirements.txt
-```
-
-### 3. Configurar variables de entorno
-Crea `backend/.env`:
-```env
-SUPABASE_URL=https://tu-proyecto.supabase.co
-SUPABASE_KEY=tu_anon_key_aqui
-FLASK_ENV=development
-GEMINI_API_KEY=tu_gemini_api_key
-```
-
-### 4. Configurar Supabase
-1. Crea un proyecto en [supabase.com](https://supabase.com)
-2. Ejecuta el script SQL en el SQL Editor:
-   - `backend/migrations/002_create_profiles_and_favorites.sql`
-3. Crea las tablas `events`, `places`, `reviews` según el modelo en `design.md`
-4. Habilita Google OAuth en Authentication → Providers → Google
-
-### 5. Iniciar el Backend
-```bash
-cd backend
-python app.py
-```
-El servidor corre en `http://localhost:5000`
-
-### 6. Iniciar el Frontend
-Usa Live Server (VS Code) o cualquier servidor estático:
-```bash
-# Con Python
-cd frontend
-python -m http.server 5500
-
-# O con Live Server de VS Code apuntando a frontend/html/index.html
-```
-Accede a `http://127.0.0.1:5500/frontend/html/index.html`
-
----
-
-## 🔑 Roles de Usuario
-
-| Rol | Permisos |
-|-----|----------|
-| **Visitante** | Ver eventos, mapa, clima. Sin login. |
-| **User** | + Guardar favoritos, publicar eventos (con moderación IA) |
-| **Admin** | + Dashboard: aprobar/rechazar eventos, bloquear usuarios |
-
-Para asignar rol admin, actualiza la tabla `profiles` en Supabase:
-```sql
-UPDATE profiles SET role = 'admin' WHERE id = 'tu-user-uuid';
-```
-
----
-
-## 🌐 API Endpoints
+## 🔑 API Endpoints
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| GET | `/api/v1/health` | Health check |
-| GET | `/api/v1/events` | Listar eventos (filtros: category, status, q) |
-| POST | `/api/v1/events` | Crear evento |
-| GET | `/api/v1/places` | Listar lugares |
-| GET | `/api/v1/places/:id` | Detalle + reseñas |
-| GET | `/api/v1/reviews` | Listar reseñas |
-| POST | `/api/v1/reviews` | Crear reseña |
-| POST | `/api/v1/moderate` | Moderar contenido con Gemini IA |
-| GET | `/api/v1/admin/events/pending` | Eventos pendientes |
-| PATCH | `/api/v1/admin/events/:id/status` | Aprobar/rechazar evento |
-| GET | `/api/v1/admin/metrics` | Métricas del dashboard |
-
----
-
-## 🎨 Paleta de Colores
-
-| Variable | Hex | Uso |
-|----------|-----|-----|
-| `--bg-main` | `#EAE3DC` | Fondo general (beige cantera) |
-| `--navy-blue` | `#5FA7A4` | Navbar, headers, textos |
-| `--terracotta` | `#F18D4E` | Botones CTA, hero, badges |
-| `--card-bg` | `#F8F5F0` | Fondo de tarjetas |
-| `--white` | `#FFFFFF` | Texto sobre fondos oscuros |
-
----
-
-## 📦 Despliegue
-
-### Frontend → Vercel
-1. Sube el repositorio a GitHub
-2. Conecta el repo en [vercel.com](https://vercel.com)
-3. Configura:
-   - **Root Directory**: `frontend`
-   - **Framework**: Other (Static HTML)
-   - **Output Directory**: `.` (raíz de frontend)
-4. Actualiza las URLs de redirect en Supabase Auth con el dominio de Vercel
-
-### Backend → Render
-1. Conecta el repo en [render.com](https://render.com)
-2. Crea un Web Service con:
-   - **Root Directory**: `backend`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `gunicorn app:app`
-3. Agrega las variables de entorno:
-   - `SUPABASE_URL`
-   - `SUPABASE_KEY`
-   - `GEMINI_API_KEY`
-   - `FLASK_ENV=production`
-4. Actualiza la URL del backend en los archivos JS del frontend
-
----
-
-## 🤝 Contribuir
-
-1. Fork del repositorio
-2. Crea una rama: `git checkout -b feature/nueva-funcionalidad`
-3. Commit: `git commit -m "feat: descripción del cambio"`
-4. Push: `git push origin feature/nueva-funcionalidad`
-5. Abre un Pull Request
-
----
-
-## 📄 Licencia
-
-Este proyecto es de código abierto bajo la licencia MIT.
+| `GET` | `/api/v1/health` | Health check |
+| `GET` | `/api/v1/events` | Listar eventos aprobados |
+| `POST` | `/api/v1/events` | Crear evento (con Cloudinary) |
+| `GET` | `/api/v1/places` | Listar lugares turísticos |
+| `POST` | `/api/v1/reviews` | Crear reseña |
+| `POST` | `/api/v1/moderate` | Moderar contenido con Gemini IA |
+| `PATCH` | `/api/v1/admin/events/:id/status` | Aprobar/rechazar evento |
 
 ---
 
 ## 👥 Equipo
 
-Desarrollado como proyecto de turismo local para la comunidad de **Saltillo, Coahuila, México**.
+Proyecto desarrollado para la comunidad de **Saltillo, Coahuila, México**.
 
 ---
 
 <p align="center">
-  <strong>SalTurismo</strong> — ¡A dónde vamos!? 🌮🗺️
+  <strong>SalTurismo</strong> — ¡A dónde vamos!? 🌮🗺️<br>
+  <sub>© 2025 SalTurismo. Todos los derechos reservados.</sub>
 </p>
