@@ -82,7 +82,7 @@ async function loginWithGoogle() {
     try {
         const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider: 'google',
-            options: { redirectTo: (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.AUTH_REDIRECT : window.location.origin + '/frontend/html/index.html' }
+            options: { redirectTo: (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.AUTH_REDIRECT : 'https://salturi.vercel.app/html/index.html' }
         });
         if (error) {
             console.error('loginWithGoogle error:', error.message);

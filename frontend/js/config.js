@@ -21,7 +21,7 @@ const APP_CONFIG = (() => {
         // Redirect para OAuth
         AUTH_REDIRECT: isLocal
             ? 'http://127.0.0.1:5500/frontend/html/index.html'
-            : window.location.origin + '/frontend/html/index.html',
+            : 'https://salturi.vercel.app/html/index.html',
 
         IS_LOCAL: isLocal
     };
