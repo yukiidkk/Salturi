@@ -12,7 +12,7 @@ const APP_CONFIG = (() => {
         // URL del backend Flask
         API_BASE: isLocal
             ? 'http://localhost:5000/api/v1'
-            : 'https://salturismo-api.onrender.com/api/v1',
+            : 'https://salturi.onrender.com/api/v1',
 
         // URL de Supabase
         SUPABASE_URL: 'https://chiuumbnfnpidhqkqbnl.supabase.co',
