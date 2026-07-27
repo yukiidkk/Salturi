@@ -140,7 +140,7 @@ function renderCarousel() {
                 <span class="date-tag">${dateText}</span>
                 <h2>${group[1].title}</h2>
                 <p class="card-location">📍 ${group[1].location}</p>
-                <button type="button" class="btn-primary" onclick="openEventModal(${group[1].id})">${btnText}</button>
+                <button type="button" class="btn-primary" onclick="openEventModal('${group[1].id}')">${btnText}</button>
             </div>
         </div>`;
     }
@@ -431,7 +431,17 @@ async function fetchWeather() {
 // MODAL DE DETALLE DE EVENTO
 // ============================================
 function openEventModal(eventId) {
-    const evento = eventosData.find(e => e.id === eventId);
+    // Buscar en allEvents (incluye Supabase + mock), luego fallback a eventosData
+    let evento = null;
+    if (typeof allEvents !== 'undefined' && allEvents.length > 0) {
+        evento = allEvents.find(e => String(e.id) === String(eventId));
+    }
+    if (!evento) {
+        evento = filteredEvents.find(e => String(e.id) === String(eventId));
+    }
+    if (!evento) {
+        evento = eventosData.find(e => String(e.id) === String(eventId));
+    }
     if (!evento) return;
 
     const lang = (typeof currentLang !== 'undefined') ? currentLang : 'es';
