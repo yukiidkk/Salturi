@@ -1,14 +1,15 @@
 import ssl
 import os
 
-# Deshabilitar verificación SSL para desarrollo local en Windows
-os.environ['PYTHONHTTPSVERIFY'] = '0'
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
+# Deshabilitar verificación SSL SOLO en desarrollo local (Windows)
+if os.environ.get('FLASK_ENV', 'production') == 'development':
+    os.environ['PYTHONHTTPSVERIFY'] = '0'
+    try:
+        _create_unverified_https_context = ssl._create_unverified_context
+    except AttributeError:
+        pass
+    else:
+        ssl._create_default_https_context = _create_unverified_https_context
 
 """
 SALTURI — app.py
@@ -75,4 +76,5 @@ def internal_error(error):
 # ============================================
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    is_dev = os.environ.get('FLASK_ENV', 'production') == 'development'
+    app.run(host='0.0.0.0', port=port, debug=is_dev)

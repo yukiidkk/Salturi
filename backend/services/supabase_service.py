@@ -45,4 +45,9 @@ def get_supabase_client() -> Client:
 
 
 # Instancia global del cliente (singleton)
-supabase: Client = get_supabase_client()
+try:
+    supabase: Client = get_supabase_client()
+except ValueError as e:
+    print(f"⚠️ WARNING: {e}")
+    print("⚠️ Supabase no disponible. Los endpoints que lo usen devolverán error 500.")
+    supabase = None

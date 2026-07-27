@@ -150,7 +150,7 @@ def moderate_review(review_id):
         if action == 'approve':
             response = (
                 supabase.table('reviews')
-                .update({"rating": 5})  # Placeholder - adjust when moderated column exists
+                .update({"id": review_id})  # No-op update to confirm existence
                 .eq('id', review_id)
                 .execute()
             )
