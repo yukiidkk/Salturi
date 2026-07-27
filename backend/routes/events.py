@@ -6,6 +6,7 @@ Prefix: /api/v1/events
 
 from flask import Blueprint, request, jsonify
 from services.supabase_service import supabase
+from services.cloudinary_service import upload_and_optimize
 import traceback
 
 events_bp = Blueprint('events', __name__, url_prefix='/api/v1/events')
@@ -92,8 +93,9 @@ def create_event():
         # Campos opcionales — solo incluir si se proporcionan
         if 'location' in data:
             event_data['location'] = data['location']
-        if 'image_url' in data:
-            event_data['image_url'] = data['image_url']
+        if 'image_url' in data and data['image_url']:
+            # Optimizar imagen con Cloudinary (webp, resize 1000px, quality auto)
+            event_data['image_url'] = upload_and_optimize(data['image_url'])
 
         response = supabase.table('events').insert(event_data).execute()
         return jsonify({"data": response.data, "message": "Evento creado, pendiente de aprobación"}), 201
