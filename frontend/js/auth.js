@@ -22,6 +22,8 @@ function initSupabase() {
 // ============================================
 // SESIÓN
 // ============================================
+let currentUserRole = null;
+
 async function checkSession() {
     if (!supabaseClient) return null;
     try {
@@ -29,6 +31,8 @@ async function checkSession() {
         if (session && session.user) {
             currentUser = session.user;
             renderUserNavbar();
+            // Consultar rol del usuario en profiles
+            await checkUserRole(currentUser.id);
             return currentUser;
         }
     } catch (e) {
@@ -37,10 +41,68 @@ async function checkSession() {
     return null;
 }
 
+async function checkUserRole(userId) {
+    try {
+        const { data: profile } = await supabaseClient
+            .from('profiles')
+            .select('role')
+            .eq('id', userId)
+            .single();
+
+        if (profile) {
+            currentUserRole = profile.role;
+            // Si es admin y estamos en index, mostrar botón al panel admin
+            if (currentUserRole === 'admin') {
+                showAdminButton();
+            }
+        }
+    } catch (e) {
+        console.warn('checkUserRole error:', e);
+    }
+}
+
+function showAdminButton() {
+    // Agregar botón de admin en el menú si no existe
+    const menu = document.querySelector('.user-menu');
+    if (menu && !menu.querySelector('[data-action="admin"]')) {
+        const logoutItem = menu.querySelector('[data-action="logout"]');
+        if (logoutItem) {
+            const adminItem = document.createElement('a');
+            adminItem.href = 'admin.html';
+            adminItem.className = 'user-menu-item';
+            adminItem.dataset.action = 'admin';
+            adminItem.innerHTML = '<i class="fa-solid fa-shield-halved"></i> Panel Admin';
+            menu.insertBefore(adminItem, logoutItem);
+        }
+    }
+}
+
+async function redirectByRole(userId) {
+    try {
+        if (supabaseClient && userId) {
+            const { data: profile } = await supabaseClient
+                .from('profiles')
+                .select('role')
+                .eq('id', userId)
+                .single();
+
+            if (profile && profile.role === 'admin') {
+                setTimeout(() => { window.location.href = 'admin.html'; }, 1000);
+                return;
+            }
+        }
+    } catch (e) {
+        console.warn('redirectByRole error:', e);
+    }
+    // Default: redirigir a index
+    setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+}
+
 /** Llamada pública para i18n — re-aplica el estado de auth en navbar */
 function reapplyAuthState() {
     if (currentUser) {
         renderUserNavbar();
+        if (currentUserRole === 'admin') showAdminButton();
     }
 }
 
@@ -181,6 +243,8 @@ function createUserMenu(anchorBtn) {
             openFavoritesPanel();
         } else if (action === 'create-event') {
             window.location.href = 'create-event.html';
+        } else if (action === 'admin') {
+            window.location.href = 'admin.html';
         }
     });
 
@@ -380,7 +444,8 @@ function initLoginForm() {
             submitBtn.textContent = 'Entrar';
         } else {
             showAuthMessage('¡Bienvenido!', 'success');
-            setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+            // Redirect basado en rol
+            await redirectByRole(result.data?.id || currentUser?.id);
         }
     });
 
@@ -529,12 +594,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 function initAuthStateListener() {
     if (!supabaseClient) return;
-    supabaseClient.auth.onAuthStateChange((event, session) => {
+    supabaseClient.auth.onAuthStateChange(async (event, session) => {
         if (event === 'SIGNED_IN' && session && session.user) {
             currentUser = session.user;
             renderUserNavbar();
+            await checkUserRole(session.user.id);
         } else if (event === 'SIGNED_OUT') {
             currentUser = null;
+            currentUserRole = null;
             renderLogoutNavbar();
         }
     });
