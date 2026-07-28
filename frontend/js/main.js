@@ -4,85 +4,13 @@
  */
 
 // ============================================
-// DATOS MOCK DE EVENTOS
+// DATOS DE EVENTOS (cargados dinámicamente)
 // ============================================
-const eventosData = [
-    {
-        id: 1,
-        title: "Concierto: Orquesta de Coahuila",
-        date: "15 Agosto",
-        date_en: "August 15",
-        category: "cultura",
-        image: "../images/evento-orquesta.jpg",
-        location: "Teatro de la Ciudad",
-        featured: false,
-        description: "Disfruta de una noche mágica con la Orquesta Filarmónica de Coahuila interpretando obras clásicas de Beethoven, Mozart y compositores mexicanos. Un evento imperdible para los amantes de la música clásica en el corazón de Saltillo.",
-        description_en: "Enjoy a magical evening with the Coahuila Philharmonic Orchestra performing classical works by Beethoven, Mozart, and Mexican composers. A must-attend event for classical music lovers in the heart of Saltillo."
-    },
-    {
-        id: 2,
-        title: "Feria de Saltillo: Tradición y Sabor",
-        date: "25-31 Julio",
-        date_en: "July 25-31",
-        category: "gastronomia",
-        image: "../images/evento-feria.jpg",
-        location: "Centro de Convenciones",
-        featured: true,
-        description: "La feria más grande del norte de México regresa con juegos mecánicos, antojitos regionales, espectáculos musicales en vivo y exposiciones artesanales. Siete días de diversión para toda la familia con la mejor gastronomía coahuilense.",
-        description_en: "The biggest fair in northern Mexico returns with rides, regional street food, live music shows, and artisan exhibitions. Seven days of fun for the whole family with the best Coahuilan gastronomy."
-    },
-    {
-        id: 3,
-        title: "Mercado de Artesanos",
-        date: "Cada Domingo",
-        date_en: "Every Sunday",
-        category: "cultura",
-        image: "../images/evento-artesanos.jpg",
-        location: "Plaza Nueva Tlaxcala",
-        featured: false,
-        description: "Cada domingo se reúnen más de 50 artesanos locales exhibiendo sarapes, cerámica, joyería de plata y productos hechos a mano. Ideal para encontrar souvenirs auténticos y apoyar a la economía local de Saltillo.",
-        description_en: "Every Sunday, over 50 local artisans gather to showcase sarapes, ceramics, silver jewelry, and handmade products. Perfect for finding authentic souvenirs and supporting Saltillo's local economy."
-    },
-    {
-        id: 4,
-        title: "Ruta de Senderismo Sierra Zapalinamé",
-        date: "10 Agosto",
-        date_en: "August 10",
-        category: "naturaleza",
-        image: "../images/evento-senderismo.jpg",
-        location: "Sierra Zapalinamé",
-        featured: false,
-        description: "Aventúrate en una caminata guiada por los senderos de la Sierra de Zapalinamé. Recorrido de dificultad media con vistas panorámicas del valle de Saltillo, flora endémica y avistamiento de aves. Incluye guía certificado.",
-        description_en: "Embark on a guided hike through the trails of Sierra de Zapalinamé. A medium-difficulty route with panoramic views of the Saltillo valley, endemic flora, and bird watching. Certified guide included."
-    },
-    {
-        id: 5,
-        title: "Festival Gastronómico del Norte",
-        date: "5-7 Septiembre",
-        date_en: "September 5-7",
-        category: "gastronomia",
-        image: "../images/evento-gastronomico.jpg",
-        location: "Parque Las Maravillas",
-        featured: true,
-        description: "Tres días dedicados a la gastronomía norteña: cortes de carne, cabrito, tamales, pan de pulque y más de 30 restaurantes participantes. Incluye clases de cocina, catas de vino y mezcal, y concursos culinarios.",
-        description_en: "Three days dedicated to northern Mexican gastronomy: meat cuts, cabrito, tamales, pan de pulque, and over 30 participating restaurants. Includes cooking classes, wine and mezcal tastings, and culinary contests."
-    },
-    {
-        id: 6,
-        title: "Noche de Museos",
-        date: "Último Viernes",
-        date_en: "Last Friday",
-        category: "cultura",
-        image: "../images/evento-museos.jpg",
-        location: "Centro Histórico",
-        featured: false,
-        description: "El último viernes de cada mes, los principales museos del Centro Histórico abren sus puertas de noche con entrada libre. Recorridos guiados, exposiciones temporales, música en vivo y food trucks en las plazas aledañas.",
-        description_en: "On the last Friday of every month, major museums in the Historic Downtown open their doors at night with free admission. Guided tours, temporary exhibitions, live music, and food trucks in nearby plazas."
-    }
-];
+const eventosData = [];
 
 // ============================================
 // CARRUSEL — Lógica de navegación
+// ============================================
 // ============================================
 let currentIndex = 0;
 let filteredEvents = [...eventosData];
@@ -109,8 +37,10 @@ function renderCarousel() {
     const btnText = (typeof t === 'function') ? t('btn_view_event') : 'Ver Evento';
 
     if (group.length === 0) {
-        const noEventsMsg = lang === 'en' ? 'No events in this category.' : 'No hay eventos en esta categoría.';
-        container.innerHTML = `<p style="color: var(--white); font-size: 1.1rem;">${noEventsMsg}</p>`;
+        const noEventsMsg = lang === 'en'
+            ? 'No events available at the moment. Be the first to publish one!'
+            : 'No hay eventos disponibles por el momento. ¡Sé el primero en publicar uno!';
+        container.innerHTML = `<div style="text-align:center;padding:2rem;"><p style="color: var(--white); font-size: 1.1rem;">${noEventsMsg}</p><p style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-top:0.5rem;">📅</p></div>`;
         renderDots();
         return;
     }
