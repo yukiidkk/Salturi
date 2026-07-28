@@ -51,9 +51,10 @@ async function checkUserRole(userId) {
 
         if (profile) {
             currentUserRole = profile.role;
-            // Si es admin y estamos en index, mostrar botón al panel admin
             if (currentUserRole === 'admin') {
                 showAdminButton();
+                // NO redirigir automáticamente en checkSession (carga de página)
+                // La redirección solo ocurre en redirectByRole (post-login)
             }
         }
     } catch (e) {
@@ -68,7 +69,7 @@ function showAdminButton() {
         const logoutItem = menu.querySelector('[data-action="logout"]');
         if (logoutItem) {
             const adminItem = document.createElement('a');
-            adminItem.href = 'admin.html';
+            adminItem.href = './admin.html';
             adminItem.className = 'user-menu-item';
             adminItem.dataset.action = 'admin';
             adminItem.innerHTML = '<i class="fa-solid fa-shield-halved"></i> Panel Admin';
@@ -87,7 +88,7 @@ async function redirectByRole(userId) {
                 .single();
 
             if (profile && profile.role === 'admin') {
-                setTimeout(() => { window.location.href = 'admin.html'; }, 1000);
+                setTimeout(() => { window.location.href = './admin.html'; }, 1000);
                 return;
             }
         }
@@ -244,7 +245,7 @@ function createUserMenu(anchorBtn) {
         } else if (action === 'create-event') {
             window.location.href = 'create-event.html';
         } else if (action === 'admin') {
-            window.location.href = 'admin.html';
+            window.location.href = './admin.html';
         }
     });
 
@@ -598,7 +599,29 @@ function initAuthStateListener() {
         if (event === 'SIGNED_IN' && session && session.user) {
             currentUser = session.user;
             renderUserNavbar();
-            await checkUserRole(session.user.id);
+
+            // Consultar rol
+            try {
+                const { data: profile } = await supabaseClient
+                    .from('profiles')
+                    .select('role')
+                    .eq('id', session.user.id)
+                    .single();
+                if (profile) {
+                    currentUserRole = profile.role;
+                    if (currentUserRole === 'admin') showAdminButton();
+                }
+            } catch (e) { /* ignore */ }
+
+            // Redirigir solo si estamos en login.html o register.html (post-login fresco)
+            const page = window.location.pathname;
+            const isAuthPage = page.endsWith('login.html') || page.endsWith('register.html');
+            if (isAuthPage && currentUserRole === 'admin') {
+                window.location.href = './admin.html';
+            } else if (isAuthPage) {
+                window.location.href = './index.html';
+            }
+
         } else if (event === 'SIGNED_OUT') {
             currentUser = null;
             currentUserRole = null;
